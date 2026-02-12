@@ -40,7 +40,7 @@ const faqItems = [
 
 export function FAQ() {
   return (
-    <section id="faq" className="py-32">
+    <section id="faq" className="py-20 md:py-32">
       <div className="max-w-4xl mx-auto px-6 md:px-12 lg:px-20">
         {/* Header */}
         <motion.div

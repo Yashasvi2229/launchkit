@@ -8,7 +8,7 @@ const ease: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
 
 export function Pricing() {
   return (
-    <section id="pricing" className="py-32 relative">
+    <section id="pricing" className="py-20 md:py-32 relative">
       <div className="max-w-4xl mx-auto px-6 md:px-12 lg:px-20 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 16 }}

@@ -124,7 +124,7 @@ export function Templates() {
     const earlyBundlePrice = Math.round(bundlePrice * 0.5);
 
     return (
-        <section id="templates" className="py-32">
+        <section id="templates" className="py-20 md:py-32">
             <div className="max-w-6xl mx-auto px-6 md:px-12 lg:px-20">
                 {/* Section header */}
                 <motion.div

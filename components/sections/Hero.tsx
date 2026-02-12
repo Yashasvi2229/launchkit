@@ -46,7 +46,7 @@ export function Hero() {
         </motion.div>
 
         {/* Rounded hero card */}
-        <div className="rounded-3xl border border-white/[0.08] bg-black/40 backdrop-blur-sm p-8 md:p-12 lg:p-16">
+        <div className="rounded-3xl border border-white/[0.08] bg-black/40 backdrop-blur-sm p-6 md:p-12 lg:p-16">
           {/* Two-column grid: Left = copy + CTA, Right = terminal */}
           <div className="grid lg:grid-cols-[1.2fr_1fr] gap-12 lg:gap-16 items-center">
             {/* Left column */}
@@ -57,7 +57,7 @@ export function Hero() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease }}
               >
-                <span className="inline-flex items-center gap-2 text-[13px] text-zinc-400 border border-white/10 rounded-full px-4 py-1.5 mb-8">
+                <span className="inline-flex items-center gap-2 text-[13px] text-zinc-400 border border-white/10 rounded-full px-4 py-1.5 mb-6 md:mb-8">
                   <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full" />
                   247 developers on the waitlist
                 </span>
@@ -68,7 +68,7 @@ export function Hero() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, ease, delay: 0.1 }}
-                className="text-hero mb-5"
+                className="text-hero mb-4 md:mb-5"
               >
                 1 command.
                 <br />
@@ -87,7 +87,7 @@ export function Hero() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease, delay: 0.2 }}
-                className="text-[16px] text-zinc-400 max-w-md mb-8 leading-relaxed"
+                className="text-[16px] text-zinc-400 max-w-md mb-6 md:mb-8 leading-relaxed"
               >
                 AI-optimized Next.js templates that make vibe coding actually
                 work. Your AI writes better code because it finally understands
@@ -101,7 +101,7 @@ export function Hero() {
                 transition={{ duration: 0.6, ease, delay: 0.3 }}
               >
                 {/* Urgency — above the button */}
-                <div className="flex items-center gap-3 mb-4">
+                <div className="flex items-center gap-3 mb-3 md:mb-4">
                   <p className="text-[13px] text-zinc-400">
                     50% off for first 100 signups
                   </p>
@@ -114,7 +114,7 @@ export function Hero() {
 
                 {/* Button — prominent, solid */}
                 <a href="/waitlist">
-                  <button className="bg-white text-black font-medium text-[16px] px-10 py-3.5 rounded-full hover:bg-zinc-200 transition-colors duration-200 cursor-pointer">
+                  <button className="w-full sm:w-auto max-w-full bg-white text-black font-medium text-[16px] px-6 py-3 sm:px-10 sm:py-3.5 rounded-full hover:bg-zinc-200 transition-colors duration-200 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap">
                     Get early access →
                   </button>
                 </a>

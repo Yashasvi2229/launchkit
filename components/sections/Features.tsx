@@ -105,7 +105,7 @@ export function Features() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, ease }}
-                    className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-32"
+                    className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-20 lg:mb-32"
                 >
                     {/* Text — left */}
                     <div>
@@ -146,7 +146,7 @@ export function Features() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, ease }}
-                    className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-32"
+                    className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-20 lg:mb-32"
                 >
                     {/* Visual — left: FileTree */}
                     <div className="order-2 lg:order-1 rounded-2xl bg-white/[0.02] border border-white/[0.06] p-4 md:p-6">
@@ -207,20 +207,18 @@ export function Features() {
                             checklists, and architecture docs — so your AI assistant understands
                             the entire codebase from the first prompt.
                         </p>
-                        <div className="flex items-center gap-4">
+                        <div className="grid grid-cols-3 gap-4 border-t border-white/[0.08] pt-6">
                             <div className="text-center">
-                                <p className="text-[28px] font-medium text-white">127</p>
-                                <p className="text-[12px] text-zinc-600">AI rules</p>
+                                <p className="text-[20px] md:text-[28px] font-medium text-white">127</p>
+                                <p className="text-[11px] md:text-[12px] text-zinc-500">AI rules</p>
                             </div>
-                            <div className="w-px h-10 bg-white/[0.08]" />
-                            <div className="text-center">
-                                <p className="text-[28px] font-medium text-white">5</p>
-                                <p className="text-[12px] text-zinc-600">skill personas</p>
+                            <div className="text-center border-l border-white/[0.08]">
+                                <p className="text-[20px] md:text-[28px] font-medium text-white">5</p>
+                                <p className="text-[11px] md:text-[12px] text-zinc-500">personas</p>
                             </div>
-                            <div className="w-px h-10 bg-white/[0.08]" />
-                            <div className="text-center">
-                                <p className="text-[28px] font-medium text-white">200+</p>
-                                <p className="text-[12px] text-zinc-600">prompts</p>
+                            <div className="text-center border-l border-white/[0.08]">
+                                <p className="text-[20px] md:text-[28px] font-medium text-white">200+</p>
+                                <p className="text-[11px] md:text-[12px] text-zinc-500">prompts</p>
                             </div>
                         </div>
                     </div>
@@ -232,7 +230,7 @@ export function Features() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, ease }}
-                    className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-32"
+                    className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-20 lg:mb-32"
                 >
                     {/* Text — left */}
                     <div>

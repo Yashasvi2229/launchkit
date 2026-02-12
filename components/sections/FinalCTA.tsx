@@ -7,7 +7,7 @@ const ease: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
 
 export function FinalCTA() {
   return (
-    <section className="py-32 relative">
+    <section className="py-20 md:py-32 relative">
       {/* Subtle top gradient */}
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent" />
 

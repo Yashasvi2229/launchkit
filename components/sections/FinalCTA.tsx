@@ -1,11 +1,14 @@
 "use client";
 
+import { useWaitlistSpots } from "@/hooks/use-waitlist-spots";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui";
 
 const ease: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
 
 export function FinalCTA() {
+  const { spotsLeft } = useWaitlistSpots();
+
   return (
     <section className="py-20 md:py-32 relative">
       {/* Subtle top gradient */}
@@ -18,11 +21,14 @@ export function FinalCTA() {
           viewport={{ once: true }}
           transition={{ duration: 0.7, ease }}
         >
-          <h2 className="text-heading mb-4">Ready to ship faster?</h2>
-          <p className="text-zinc-500 mb-10 text-[16px] leading-relaxed">
-            Join{" "}
-            <span className="text-white font-medium">247 developers</span>{" "}
-            getting early access and 50% off at launch.
+          <h2 className="text-[32px] md:text-[40px] font-medium tracking-tight text-white mb-4 leading-tight">
+            Stop fighting your AI.<br />
+            Start shipping.
+          </h2>
+          <p className="text-zinc-500 mb-10 text-[16px] leading-relaxed max-w-xl mx-auto">
+            Generic templates force you to spend 20 minutes debugging AI errors. LaunchX gives your AI the context to get it right the first time.
+            <br className="hidden md:block" />
+            Join <span className="text-white font-medium">other developers</span> skipping the debugging phase.
           </p>
         </motion.div>
 
@@ -40,7 +46,7 @@ export function FinalCTA() {
           </a>
           <div className="flex items-center gap-2 text-[13px] text-zinc-600">
             <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
-            8 early-bird spots remaining
+            {spotsLeft !== null ? spotsLeft : "–"} early-bird spots remaining
           </div>
         </motion.div>
       </div>

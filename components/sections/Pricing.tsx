@@ -40,8 +40,9 @@ export function Pricing() {
 
             <div className="flex items-baseline gap-2 mb-8">
               <span className="text-zinc-500 text-[15px]">from</span>
-              <span className="text-4xl font-medium text-white">$49</span>
-              <span className="text-zinc-600 line-through text-sm">$99</span>
+              <span className="text-zinc-600 line-through text-[20px]">$200</span>
+              <span className="text-[42px] font-semibold text-emerald-400">$99</span>
+              <span className="text-zinc-500 text-[14px]">/lifetime</span>
             </div>
 
             <ul className="space-y-4 mb-8">
@@ -86,8 +87,9 @@ export function Pricing() {
             </p>
 
             <div className="flex items-baseline gap-2 mb-8">
-              <span className="text-4xl font-medium text-white">$149</span>
-              <span className="text-zinc-600 line-through text-lg">$299</span>
+              <span className="text-zinc-600 line-through text-[22px]">$1,600</span>
+              <span className="text-[48px] font-semibold text-emerald-400">$399</span>
+              <span className="text-zinc-500 text-[14px]">/lifetime</span>
             </div>
 
             <ul className="space-y-4 mb-8">

@@ -32,7 +32,6 @@ const techSlugs = [
     "vercel",
     "postgresql",
     "nodejs",
-    "docker",
     "git",
     "github",
 ];
@@ -40,9 +39,9 @@ const techSlugs = [
 const supportingFeatures = [
     {
         icon: MessageSquareCode,
-        title: "200+ AI Prompts",
+        title: "Queryable Precedent",
         description:
-            "Copy-paste commands for auth, payments, and features that work first try.",
+            "200+ established patterns with Build, Verify, and Debug instructions.",
     },
     {
         icon: RefreshCw,
@@ -52,9 +51,9 @@ const supportingFeatures = [
     },
     {
         icon: Users,
-        title: "Role-Specific Personas",
+        title: "Mode-Switching Skills",
         description:
-            "Frontend, backend, DevOps — AI knows exactly how to help.",
+            "Frontend, backend, DevOps — behavioral personas for sustained work sessions.",
     },
     {
         icon: Shield,
@@ -64,9 +63,9 @@ const supportingFeatures = [
     },
     {
         icon: FileText,
-        title: "AI-Readable PRDs",
+        title: "Traversable Graph",
         description:
-            "Product requirements always clear. Context never lost between prompts.",
+            "Context files use self-directing instructions so the AI autonomously loads what it needs.",
     },
     {
         icon: Rocket,

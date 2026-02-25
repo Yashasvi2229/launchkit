@@ -14,115 +14,129 @@ import { useWaitlistSpots } from "@/hooks/use-waitlist-spots";
 
 const ease: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
 
-const templates = [
-    {
-        icon: Bot,
-        name: "AI Wrapper SaaS",
-        price: 119,
-        description: "Ship AI-powered tools with built-in billing and usage tracking.",
-        stack: [
-            { imageUrl: "https://cdn.simpleicons.org/nextdotjs/white", profileUrl: "" },
-            { imageUrl: "https://cdn.simpleicons.org/clerk/6C47FF", profileUrl: "" },
-            { imageUrl: "https://cdn.simpleicons.org/supabase/3ECF8E", profileUrl: "" },
-            { imageUrl: "https://cdn.simpleicons.org/stripe/635BFF", profileUrl: "" },
-            { imageUrl: "https://cdn.simpleicons.org/openai/white", profileUrl: "" },
-        ],
-        prebuilt: [
-            "Token counting & credit system",
-            "Subscription tiers (Free/Pro/Enterprise)",
-            "Streaming responses UI",
-            "API key management",
-            "Usage dashboard & analytics",
-        ],
-        buildWith: ["Chat tools", "Image generators", "Writing assistants", "Code analyzers"],
-    },
-    {
-        icon: Globe,
-        name: "Landing Page + Waitlist",
-        price: 99,
-        description: "Validate ideas fast with a polished landing page and email capture.",
-        stack: [
-            { imageUrl: "https://cdn.simpleicons.org/nextdotjs/white", profileUrl: "" },
-            { imageUrl: "https://cdn.simpleicons.org/tailwindcss/06B6D4", profileUrl: "" },
-            { imageUrl: "https://cdn.simpleicons.org/framer/white", profileUrl: "" },
-            { imageUrl: "https://cdn.simpleicons.org/resend/white", profileUrl: "" },
-        ],
-        prebuilt: [
-            "Animated hero sections",
-            "Email capture + waitlist",
-            "SEO optimized",
-            "Analytics ready (PostHog)",
-            "A/B testing support",
-        ],
-        buildWith: ["Product launches", "Idea validation", "Coming soon pages", "Side projects"],
-    },
-    {
-        icon: LayoutDashboard,
-        name: "SaaS Dashboard",
-        price: 119,
-        description: "Internal tools and admin panels with charts, tables, and role-based access.",
-        stack: [
-            { imageUrl: "https://cdn.simpleicons.org/nextdotjs/white", profileUrl: "" },
-            { imageUrl: "https://cdn.simpleicons.org/stripe/635BFF", profileUrl: "" },
-            { imageUrl: "https://cdn.simpleicons.org/tailwindcss/06B6D4", profileUrl: "" },
-            { imageUrl: "https://cdn.simpleicons.org/auth0/white", profileUrl: "" }, // NextAuth often uses generic auth or Auth0 visual if outdated
-            { imageUrl: "https://cdn.simpleicons.org/supabase/3ECF8E", profileUrl: "" },
-        ],
-        prebuilt: [
-            "Charts & analytics views",
-            "Sortable data tables",
-            "Role-based access control",
-            "Admin panel",
-            "CSV export / import",
-        ],
-        buildWith: ["Internal tools", "Client dashboards", "Admin panels", "Reporting apps"],
-    },
-    {
-        icon: Chrome,
-        name: "Chrome Extension",
-        price: 99,
-        description: "Build browser extensions with modern tooling and Manifest V3.",
-        stack: [
-            { imageUrl: "https://cdn.simpleicons.org/react/61DAFB", profileUrl: "" },
-            { imageUrl: "https://cdn.simpleicons.org/typescript/3178C6", profileUrl: "" },
-            { imageUrl: "https://cdn.simpleicons.org/vite/646CFF", profileUrl: "" },
-            { imageUrl: "https://cdn.simpleicons.org/googlechrome/white", profileUrl: "" },
-        ],
-        prebuilt: [
-            "Popup + sidebar UI",
-            "Content scripts",
-            "Chrome storage sync",
-            "Background workers",
-            "Web Store ready packaging",
-        ],
-        buildWith: ["Productivity tools", "Web scrapers", "AI assistants", "Tab managers"],
-    },
-    {
-        icon: Smartphone,
-        name: "Mobile App",
-        price: 129,
-        description: "Cross-platform mobile apps with auth, push notifications, and offline support.",
-        stack: [
-            { imageUrl: "https://cdn.simpleicons.org/react/61DAFB", profileUrl: "" },
-            { imageUrl: "https://cdn.simpleicons.org/expo/white", profileUrl: "" },
-            { imageUrl: "https://cdn.simpleicons.org/typescript/3178C6", profileUrl: "" },
-            { imageUrl: "https://cdn.simpleicons.org/supabase/3ECF8E", profileUrl: "" },
-        ],
-        prebuilt: [
-            "Push notifications",
-            "Deep linking",
-            "Offline-first storage",
-            "Auth flows (biometric)",
-            "App Store ready config",
-        ],
-        buildWith: ["Consumer apps", "Fitness trackers", "Social tools", "Habit apps"],
-    },
-];
+const templates: {
+    icon: any;
+    name: string;
+    originalPrice: number;
+    price: number;
+    description: string;
+    stack: { imageUrl: string; profileUrl: string }[];
+    prebuilt: (string | { label: string; highlight: boolean })[];
+    buildWith: string[];
+}[] = [
+        {
+            icon: LayoutDashboard,
+            name: "General SaaS",
+            originalPrice: 300,
+            price: 149,
+            description: "The complete foundation for any SaaS. Auth, payments, database, and UI ready to go.",
+            stack: [
+                { imageUrl: "https://cdn.simpleicons.org/nextdotjs/white", profileUrl: "" },
+                { imageUrl: "https://cdn.simpleicons.org/stripe/635BFF", profileUrl: "" },
+                { imageUrl: "https://cdn.simpleicons.org/supabase/3ECF8E", profileUrl: "" },
+                { imageUrl: "https://cdn.simpleicons.org/resend/white", profileUrl: "" },
+                { imageUrl: "https://cdn.simpleicons.org/react/61DAFB", profileUrl: "" },
+            ],
+            prebuilt: [
+                "Auth, Payments & Database",
+                "Email, SEO & Analytics",
+                "Landing page & Dashboard UI",
+                { label: "PLUS: .cursorrules & context docs", highlight: true },
+                { label: "PLUS: AI prompt library", highlight: true },
+                { label: "PLUS: Security & role prompts", highlight: true },
+            ],
+            buildWith: ["B2B SaaS", "Consumer apps", "Internal tools", "Marketplaces"],
+        },
+        {
+            icon: Bot,
+            name: "AI Wrapper SaaS",
+            originalPrice: 400,
+            price: 199,
+            description: "Ship AI-powered tools with built-in billing, caching, and usage tracking.",
+            stack: [
+                { imageUrl: "https://cdn.simpleicons.org/nextdotjs/white", profileUrl: "" },
+                { imageUrl: "https://cdn.simpleicons.org/stripe/635BFF", profileUrl: "" },
+                { imageUrl: "https://cdn.simpleicons.org/supabase/3ECF8E", profileUrl: "" },
+                { imageUrl: "https://cdn.simpleicons.org/claude/D97757", profileUrl: "" },
+            ],
+            prebuilt: [
+                "Token counting & credit system",
+                "API key management & caching",
+                "Streaming responses UI",
+                { label: "PLUS: AI-specific .cursorrules", highlight: true },
+                { label: "PLUS: Model routing prompts", highlight: true },
+                { label: "PLUS: AI architecture docs", highlight: true },
+            ],
+            buildWith: ["Chat tools", "Generators", "Analyzers", "Copilots"],
+        },
+        {
+            icon: Globe,
+            name: "Landing Page + Waitlist",
+            originalPrice: 200,
+            price: 99,
+            description: "Validate ideas fast with a polished landing page and email capture.",
+            stack: [
+                { imageUrl: "https://cdn.simpleicons.org/nextdotjs/white", profileUrl: "" },
+                { imageUrl: "https://cdn.simpleicons.org/tailwindcss/06B6D4", profileUrl: "" },
+                { imageUrl: "https://cdn.simpleicons.org/framer/white", profileUrl: "" },
+                { imageUrl: "https://cdn.simpleicons.org/resend/white", profileUrl: "" },
+            ],
+            prebuilt: [
+                "Animated hero sections",
+                "Email capture + waitlist",
+                "SEO optimized",
+                "Analytics ready (PostHog)",
+                "A/B testing support",
+            ],
+            buildWith: ["Product launches", "Idea validation", "Coming soon pages", "Side projects"],
+        },
+        {
+            icon: Chrome,
+            name: "Chrome Extension",
+            originalPrice: 200,
+            price: 99,
+            description: "Build browser extensions with modern tooling and Manifest V3.",
+            stack: [
+                { imageUrl: "https://cdn.simpleicons.org/react/61DAFB", profileUrl: "" },
+                { imageUrl: "https://cdn.simpleicons.org/typescript/3178C6", profileUrl: "" },
+                { imageUrl: "https://cdn.simpleicons.org/vite/646CFF", profileUrl: "" },
+                { imageUrl: "https://cdn.simpleicons.org/googlechrome/white", profileUrl: "" },
+            ],
+            prebuilt: [
+                "Popup + sidebar UI",
+                "Content scripts",
+                "Chrome storage sync",
+                "Background workers",
+                "Web Store ready packaging",
+            ],
+            buildWith: ["Productivity tools", "Web scrapers", "AI assistants", "Tab managers"],
+        },
+        {
+            icon: Smartphone,
+            name: "Mobile App",
+            originalPrice: 400,
+            price: 199,
+            description: "Cross-platform mobile apps with auth, push notifications, and offline support.",
+            stack: [
+                { imageUrl: "https://cdn.simpleicons.org/react/61DAFB", profileUrl: "" },
+                { imageUrl: "https://cdn.simpleicons.org/expo/white", profileUrl: "" },
+                { imageUrl: "https://cdn.simpleicons.org/typescript/3178C6", profileUrl: "" },
+                { imageUrl: "https://cdn.simpleicons.org/supabase/3ECF8E", profileUrl: "" },
+            ],
+            prebuilt: [
+                "Push notifications",
+                "Deep linking",
+                "Offline-first storage",
+                "Auth flows (biometric)",
+                "App Store ready config",
+            ],
+            buildWith: ["Consumer apps", "Fitness trackers", "Social tools", "Habit apps"],
+        },
+    ];
 
 export function Templates() {
-    const totalValue = templates.reduce((sum, t) => sum + t.price, 0);
-    const bundlePrice = 299;
-    const earlyBundlePrice = Math.round(bundlePrice * 0.5);
+    const totalValue = templates.reduce((sum, t) => sum + t.originalPrice, 0);
+    const bundlePrice = 399;
     const { spotsLeft } = useWaitlistSpots();
 
     return (
@@ -143,6 +157,37 @@ export function Templates() {
                         Each template ships with AI rules, security docs, prompts, and
                         one-command deployment.
                     </p>
+                </motion.div>
+
+                {/* Early access urgency banner */}
+                <motion.div
+                    initial={{ opacity: 0, y: 12 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, ease }}
+                    className="mb-10 rounded-xl bg-emerald-500/[0.04] border border-emerald-500/15 px-5 py-4 max-w-md"
+                >
+                    <div className="flex items-center gap-2 mb-2.5">
+                        <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
+                        <p className="text-[13px] text-zinc-300">
+                            Early access pricing —{" "}
+                            <span className="text-emerald-400 font-medium">
+                                {spotsLeft !== null ? spotsLeft : "–"} of 100 spots
+                            </span>{" "}
+                            remaining
+                        </p>
+                    </div>
+                    <div className="h-1.5 rounded-full bg-white/[0.06] overflow-hidden">
+                        <motion.div
+                            className="h-full bg-emerald-400/60 rounded-full"
+                            initial={{ width: 0 }}
+                            whileInView={{
+                                width: spotsLeft !== null ? `${((100 - spotsLeft) / 100) * 100}%` : "0%",
+                            }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 1.2, ease, delay: 0.3 }}
+                        />
+                    </div>
                 </motion.div>
 
                 {/* Template cards — 3 top row, 2 bottom row centered */}
@@ -168,11 +213,12 @@ export function Templates() {
                                 </div>
                                 <div>
                                     <h3 className="text-[15px] font-medium text-white">{template.name}</h3>
-                                    <div className="flex items-center gap-2">
-                                        <span className="text-zinc-600 text-[13px] line-through">${template.price}</span>
-                                        <span className="text-emerald-400 text-[13px] font-medium">
-                                            ${Math.round(template.price * 0.5)}
+                                    <div className="flex items-baseline gap-2">
+                                        <span className="text-zinc-600 text-[16px] line-through">${template.originalPrice}</span>
+                                        <span className="text-emerald-400 text-[20px] font-semibold">
+                                            ${template.price}
                                         </span>
+                                        <span className="text-zinc-500 text-[12px]">/lifetime</span>
                                     </div>
                                 </div>
                             </div>
@@ -187,12 +233,20 @@ export function Templates() {
 
                             {/* Pre-built features */}
                             <div className="space-y-2 mb-5 flex-1">
-                                {template.prebuilt.map((item, j) => (
-                                    <div key={j} className="flex items-start gap-2 text-[12px]">
-                                        <span className="text-emerald-400 mt-0.5">✓</span>
-                                        <span className="text-zinc-400">{item}</span>
-                                    </div>
-                                ))}
+                                {template.prebuilt.map((item, j) => {
+                                    const isHighlight = typeof item === 'object' && item.highlight;
+                                    const label = typeof item === 'object' ? item.label : item;
+                                    return (
+                                        <div key={j} className="flex items-start gap-2 text-[12px]">
+                                            <span className={isHighlight ? "text-emerald-400 mt-0.5 font-bold" : "text-emerald-400 mt-0.5"}>
+                                                {isHighlight ? "✦" : "✓"}
+                                            </span>
+                                            <span className={isHighlight ? "text-emerald-300 font-medium" : "text-zinc-400"}>
+                                                {label}
+                                            </span>
+                                        </div>
+                                    )
+                                })}
                             </div>
 
                             {/* Perfect for building */}
@@ -245,21 +299,22 @@ export function Templates() {
                             </h3>
                             <p className="text-zinc-500 text-[15px] max-w-md">
                                 Get everything. Lifetime updates. One payment.
-                                Save ${totalValue - earlyBundlePrice} compared to buying individually.
+                                Save ${totalValue - bundlePrice} compared to buying individually.
                             </p>
                         </div>
 
                         <div className="flex flex-col items-start md:items-end gap-3">
                             <div className="flex items-baseline gap-3">
-                                <span className="text-zinc-600 text-[18px] line-through">${totalValue}</span>
-                                <span className="text-[36px] font-medium text-white">${earlyBundlePrice}</span>
+                                <span className="text-zinc-600 text-[22px] line-through">${totalValue}</span>
+                                <span className="text-[40px] font-semibold text-emerald-400">${bundlePrice}</span>
+                                <span className="text-zinc-500 text-[14px]">/lifetime</span>
                             </div>
                             <a href="/waitlist">
                                 <button className="bg-white text-black font-medium text-[15px] px-8 py-3 rounded-full hover:bg-zinc-200 transition-colors duration-200 cursor-pointer whitespace-nowrap">
                                     Get early access →
                                 </button>
                             </a>
-                            <p className="text-[12px] text-zinc-600">50% off — {spotsLeft !== null ? spotsLeft : "–"} spots left</p>
+                            <p className="text-[12px] text-zinc-600">{spotsLeft !== null ? spotsLeft : "–"} spots left</p>
                         </div>
                     </div>
                 </motion.div>

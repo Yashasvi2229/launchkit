@@ -14,7 +14,7 @@ import { useWaitlistSpots } from "@/hooks/use-waitlist-spots";
 const ease: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
 
 export function Hero() {
-  const { spotsLeft } = useWaitlistSpots();
+  const { spotsLeft, totalSignups } = useWaitlistSpots();
   return (
     <section
       id="hero"
@@ -60,8 +60,8 @@ export function Hero() {
                 transition={{ duration: 0.6, ease }}
               >
                 <span className="inline-flex items-center gap-2 text-[13px] text-zinc-400 border border-white/10 rounded-full px-4 py-1.5 mb-6 md:mb-8">
-                  <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full" />
-                  247 developers on the waitlist
+                  <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
+                  Early access waitlist open
                 </span>
               </motion.div>
 
@@ -189,7 +189,7 @@ export function Hero() {
                 <img src="https://cdn.simpleicons.org/supabase/white" alt="Supabase" className="h-8 opacity-40 hover:opacity-70 transition-opacity duration-300" />
                 <img src="https://cdn.simpleicons.org/stripe/white" alt="Stripe" className="h-8 opacity-40 hover:opacity-70 transition-opacity duration-300" />
                 <img src="https://cdn.simpleicons.org/clerk/white" alt="Clerk" className="h-8 opacity-40 hover:opacity-70 transition-opacity duration-300" />
-                <img src="https://cdn.simpleicons.org/anthropic/white" alt="Anthropic" className="h-8 opacity-40 hover:opacity-70 transition-opacity duration-300" />
+                <img src="https://cdn.simpleicons.org/claude/white" alt="Claude" className="h-8 opacity-40 hover:opacity-70 transition-opacity duration-300" />
               </div>
             </motion.div>
           </div>

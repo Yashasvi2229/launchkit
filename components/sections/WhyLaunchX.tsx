@@ -39,11 +39,13 @@ const comparisonRows = [
 ];
 
 const sliderStops = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-const GENERIC_AI_COST = 200;
-const GENERIC_OVERAGE_COST = 40;
+const GENERIC_TEMPLATE_COST = 250;
+const GENERIC_AI_COST = 50;
+const GENERIC_TOOLS_COST = 40;
 const GENERIC_WEEKS = 4;
-const LAUNCHX_PRICE = 149;
+const LAUNCHX_PRICE = 199;
 const LAUNCHX_AI_COST = 15;
+const LAUNCHX_TOOLS_COST = 20;
 const LAUNCHX_WEEKENDS = 1;
 
 export function WhyLaunchX() {
@@ -51,20 +53,22 @@ export function WhyLaunchX() {
     const { spotsLeft } = useWaitlistSpots();
 
     const calc = useMemo(() => {
+        const genericTemplate = GENERIC_TEMPLATE_COST;
         const genericAI = projects * GENERIC_AI_COST;
-        const genericOverage = projects * GENERIC_OVERAGE_COST;
+        const genericTools = projects * GENERIC_TOOLS_COST;
         const genericWeeks = projects * GENERIC_WEEKS;
-        const genericTotal = genericAI + genericOverage;
+        const genericTotal = genericTemplate + genericAI + genericTools;
 
         const launchxAI = projects * LAUNCHX_AI_COST;
-        const launchxTotal = LAUNCHX_PRICE + launchxAI;
+        const launchxTools = projects * LAUNCHX_TOOLS_COST;
+        const launchxTotal = LAUNCHX_PRICE + launchxAI + launchxTools;
         const launchxWeekends = projects * LAUNCHX_WEEKENDS;
 
         const savings = genericTotal - launchxTotal;
         const weeksSaved = genericWeeks - launchxWeekends;
         const roi = launchxTotal > 0 ? Math.round((savings / launchxTotal) * 100) : 0;
 
-        return { genericAI, genericOverage, genericWeeks, genericTotal, launchxAI, launchxTotal, launchxWeekends, savings, weeksSaved, roi };
+        return { genericTemplate, genericAI, genericTools, genericWeeks, genericTotal, launchxAI, launchxTools, launchxTotal, launchxWeekends, savings, weeksSaved, roi };
     }, [projects]);
 
     return (
@@ -85,10 +89,9 @@ export function WhyLaunchX() {
                         Why LaunchX costs less than building from scratch
                     </h2>
                     <p className="text-zinc-400 text-[16px] leading-relaxed mb-10 max-w-xl">
-                        Most templates give you code. We give your AI the knowledge to
-                        maintain it. That&apos;s the difference between burning through your
-                        Cursor quota in week 2 and shipping features all year without
-                        hitting limits.
+                        Generic templates burn tokens because your AI has no context.
+                        LaunchX gives it a complete understanding of your codebase — so
+                        you ship faster, spend less on API costs, and never hit rate limits.
                     </p>
 
                     {/* Comparison Table */}
@@ -170,18 +173,26 @@ export function WhyLaunchX() {
                                 <div className="space-y-3">
                                     <div className="flex items-center justify-between">
                                         <span className="text-[13px] text-zinc-500">
-                                            AI costs
+                                            Generic template
                                         </span>
                                         <span className="text-[14px] text-zinc-300 font-medium">
-                                            $180 – $250
+                                            $200 – $300
                                         </span>
                                     </div>
                                     <div className="flex items-center justify-between">
                                         <span className="text-[13px] text-zinc-500">
-                                            Cursor overages
+                                            AI token costs
                                         </span>
                                         <span className="text-[14px] text-zinc-300 font-medium">
-                                            $40 – $80
+                                            $30 – $80
+                                        </span>
+                                    </div>
+                                    <div className="flex items-center justify-between">
+                                        <span className="text-[13px] text-zinc-500">
+                                            Other AI tools
+                                        </span>
+                                        <span className="text-[14px] text-zinc-300 font-medium">
+                                            $30 – $50
                                         </span>
                                     </div>
                                     <div className="flex items-center justify-between">
@@ -197,7 +208,7 @@ export function WhyLaunchX() {
                                             Total
                                         </span>
                                         <span className="text-[16px] text-white font-medium">
-                                            ~$250
+                                            ~$340 per project
                                         </span>
                                     </div>
                                 </div>
@@ -226,10 +237,10 @@ export function WhyLaunchX() {
                                 <div className="space-y-3">
                                     <div className="flex items-center justify-between">
                                         <span className="text-[13px] text-zinc-500">
-                                            One-time
+                                            One-time template
                                         </span>
                                         <span className="text-[14px] text-emerald-400 font-medium">
-                                            $149
+                                            $199
                                         </span>
                                     </div>
                                     <div className="flex items-center justify-between">
@@ -238,6 +249,14 @@ export function WhyLaunchX() {
                                         </span>
                                         <span className="text-[14px] text-emerald-400 font-medium">
                                             $10 – $15
+                                        </span>
+                                    </div>
+                                    <div className="flex items-center justify-between">
+                                        <span className="text-[13px] text-zinc-500">
+                                            Other AI tools
+                                        </span>
+                                        <span className="text-[14px] text-emerald-400 font-medium">
+                                            $20
                                         </span>
                                     </div>
                                     <div className="flex items-center justify-between">
@@ -253,7 +272,7 @@ export function WhyLaunchX() {
                                             Total
                                         </span>
                                         <span className="text-[16px] text-emerald-400 font-medium">
-                                            ~$164
+                                            ~$234
                                         </span>
                                     </div>
                                 </div>
@@ -263,7 +282,7 @@ export function WhyLaunchX() {
                                     <motion.div
                                         className="h-full bg-emerald-400/60 rounded-full"
                                         initial={{ width: 0 }}
-                                        whileInView={{ width: "65%" }}
+                                        whileInView={{ width: "55%" }}
                                         viewport={{ once: true }}
                                         transition={{
                                             duration: 1,
@@ -280,7 +299,7 @@ export function WhyLaunchX() {
                             <p className="text-[16px] md:text-[18px] text-white font-medium">
                                 You save:{" "}
                                 <span className="text-emerald-400">
-                                    $200+
+                                    ~$105
                                 </span>{" "}
                                 and{" "}
                                 <span className="text-emerald-400">
@@ -289,8 +308,7 @@ export function WhyLaunchX() {
                                 on your first project.
                             </p>
                             <p className="text-[13px] text-zinc-500 mt-2">
-                                Break even immediately. Profit on every project
-                                after.
+                                Even more on every project after — no repeat template cost.
                             </p>
                         </div>
                     </div>
@@ -358,15 +376,24 @@ export function WhyLaunchX() {
                                 </h3>
                                 <div className="space-y-3">
                                     <div className="flex items-center justify-between">
+                                        <span className="text-[13px] text-zinc-500">Generic template</span>
+                                        <span className="text-[14px] text-zinc-300 font-medium">
+                                            ${calc.genericTemplate.toLocaleString()} <span className="text-zinc-600 text-[11px]">(one-time)</span>
+                                        </span>
+                                    </div>
+                                    <div className="flex items-center justify-between">
                                         <span className="text-[13px] text-zinc-500">AI token costs</span>
                                         <span className="text-[14px] text-zinc-300 font-medium">
                                             ${calc.genericAI.toLocaleString()} <span className="text-zinc-600 text-[11px]">({projects} x ${GENERIC_AI_COST})</span>
                                         </span>
                                     </div>
                                     <div className="flex items-center justify-between">
-                                        <span className="text-[13px] text-zinc-500">Cursor rate limit overages</span>
-                                        <span className="text-[14px] text-zinc-300 font-medium">${calc.genericOverage.toLocaleString()}</span>
+                                        <span className="text-[13px] text-zinc-500">Other AI tools</span>
+                                        <span className="text-[14px] text-zinc-300 font-medium">
+                                            ${calc.genericTools.toLocaleString()} <span className="text-zinc-600 text-[11px]">({projects} x ${GENERIC_TOOLS_COST})</span>
+                                        </span>
                                     </div>
+
                                     <div className="flex items-center justify-between">
                                         <span className="text-[13px] text-zinc-500">Time spent</span>
                                         <span className="text-[14px] text-zinc-300 font-medium">{calc.genericWeeks} weeks</span>
@@ -387,7 +414,7 @@ export function WhyLaunchX() {
                                 </h3>
                                 <div className="space-y-3">
                                     <div className="flex items-center justify-between">
-                                        <span className="text-[13px] text-zinc-500">LaunchX (one-time)</span>
+                                        <span className="text-[13px] text-zinc-500">LaunchX template (one-time)</span>
                                         <span className="text-[14px] text-emerald-400 font-medium">${LAUNCHX_PRICE}</span>
                                     </div>
                                     <div className="flex items-center justify-between">
@@ -397,8 +424,10 @@ export function WhyLaunchX() {
                                         </span>
                                     </div>
                                     <div className="flex items-center justify-between">
-                                        <span className="text-[13px] text-zinc-500">Cursor overages</span>
-                                        <span className="text-[14px] text-emerald-400 font-medium">$0 <span className="text-zinc-600 text-[11px]">(never hit limits)</span></span>
+                                        <span className="text-[13px] text-zinc-500">Other AI tools</span>
+                                        <span className="text-[14px] text-emerald-400 font-medium">
+                                            ${calc.launchxTools} <span className="text-zinc-600 text-[11px]">({projects} x ${LAUNCHX_TOOLS_COST})</span>
+                                        </span>
                                     </div>
                                     <div className="flex items-center justify-between">
                                         <span className="text-[13px] text-zinc-500">Time spent</span>
@@ -417,7 +446,7 @@ export function WhyLaunchX() {
                         {/* Big savings callout */}
                         <div className="rounded-xl bg-emerald-500/[0.05] border border-emerald-500/20 p-6 md:p-8 text-center">
                             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-10 mb-4">
-                                <div>
+                                <div className="text-center">
                                     <p className="text-[11px] font-mono text-zinc-500 mb-1 tracking-wide">YOU SAVE</p>
                                     <p className="text-[32px] md:text-[40px] font-medium text-emerald-400 leading-none">
                                         ${calc.savings.toLocaleString()}
@@ -425,16 +454,17 @@ export function WhyLaunchX() {
                                     <p className="text-[13px] text-zinc-400 mt-1">+ {calc.weeksSaved} weeks</p>
                                 </div>
                                 <div className="hidden sm:block w-px h-16 bg-white/[0.06]" />
-                                <div>
+                                <div className="text-center">
                                     <p className="text-[11px] font-mono text-zinc-500 mb-1 tracking-wide">ROI</p>
                                     <p className="text-[32px] md:text-[40px] font-medium text-white leading-none">
                                         {calc.roi}%
                                     </p>
+                                    <p className="text-[13px] text-zinc-400 mt-1">&nbsp;</p>
                                 </div>
                             </div>
                             <p className="text-[13px] text-zinc-400 mt-4">
                                 Every project after the first is{" "}
-                                <span className="text-emerald-400 font-medium">93% cheaper</span>.
+                                <span className="text-emerald-400 font-medium">60% cheaper</span>.
                             </p>
                         </div>
 
@@ -442,7 +472,7 @@ export function WhyLaunchX() {
                         <div className="mt-8 text-center">
                             <a href="/waitlist">
                                 <button className="bg-white text-black font-medium text-[15px] px-8 py-3.5 rounded-full hover:bg-zinc-200 transition-colors duration-200 cursor-pointer">
-                                    Get LaunchX — $149 ({spotsLeft !== null ? spotsLeft : "–"} spots left)
+                                    Get LaunchX — $199 ({spotsLeft !== null ? spotsLeft : "–"} spots left)
                                 </button>
                             </a>
                         </div>

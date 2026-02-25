@@ -9,32 +9,27 @@ const faqItems = [
   {
     question: "How is this different from other boilerplates?",
     answer:
-      "Most boilerplates are just code. LaunchX includes .cursorrules that teach AI your entire architecture — cutting token usage by 80%. Plus one-command setup and living updates that keep templates current.",
+      "Most templates just give you code. LaunchX gives your AI memory. We built a 3-layer skill graph into the codebase that teaches Cursor, Windsurf, or Copilot exactly how your architecture works, so it stops breaking patterns in Week 3.",
   },
   {
-    question: "Will this work with my Cursor subscription?",
+    question: "Wait, does this consume a ton of my premium AI requests?",
     answer:
-      "Yes. It makes your subscription 10x more valuable. Use 50 requests for setup instead of 500. That leaves 450 for actual features. Your monthly limit goes much further.",
+      "Actually, it saves them. LaunchX uses a self-directing 'Session Bootstrap' (HANDOVER.md). Instead of dumping 50 files into context, the AI only loads the specific domain files it needs (e.g., just the payments logic). You use fewer tokens and get correct code on the first try.",
+  },
+  {
+    question: "Is this just a bundle of prompts?",
+    answer:
+      "No. You get 5 complete, production-ready SaaS templates, plus the invisible 'AI Layer' — the .cursorrules, the domain context maps, and a library of 200+ established patterns that ensure your AI writes secure, consistent code.",
+  },
+  {
+    question: "I already know how to code, is this for me?",
+    answer:
+      "If you're tired of explaining the same rate-limiting rules or component schemas to your AI over and over, yes. LaunchX acts as your architectural enforcer, so you can spend your time engineering features instead of reviewing AI typos.",
   },
   {
     question: "Can I use this for client projects?",
     answer:
-      "Absolutely. Unlimited projects, no per-project fees. Build as many client projects as you want with one purchase.",
-  },
-  {
-    question: "What if I'm already halfway through a project?",
-    answer:
-      "We include migration guides to adopt LaunchX patterns into existing projects. Gradually improve your codebase without starting over.",
-  },
-  {
-    question: "When does this launch?",
-    answer:
-      "Late February 2026. Join the waitlist to lock in the 50% discount and get notified the moment we go live.",
-  },
-  {
-    question: "Do I need to know how to code?",
-    answer:
-      "Basic React and Next.js knowledge helps. If you can use Cursor, you can use LaunchX. The AI handles the heavy lifting.",
+      "Absolutely. Unlimited projects, no per-project fees. Deliver robust, AI-maintainable codebases to your clients.",
   },
 ];
 

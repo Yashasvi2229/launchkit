@@ -41,7 +41,7 @@ const supportingFeatures = [
         icon: MessageSquareCode,
         title: "Queryable Precedent",
         description:
-            "200+ established patterns with Build, Verify, and Debug instructions.",
+            "Multiple established patterns with Build, Verify, and Debug instructions.",
     },
     {
         icon: RefreshCw,
@@ -362,7 +362,7 @@ export function Features() {
                                                                       
                                                                       `}</AnimatedSpan>
 
-                            <AnimatedSpan className="text-zinc-300">{`\n🚀 Let's get your AI Wrapper deployed in 5 minutes`}</AnimatedSpan>
+                            <AnimatedSpan className="text-zinc-300">{`\n Let's get your AI Wrapper deployed in 5 minutes`}</AnimatedSpan>
 
                             <AnimatedSpan className="text-green-500">✓ Detected template: AI Wrapper SaaS</AnimatedSpan>
                             <AnimatedSpan className="text-green-500">✓ Node version: 18.17.0 ✓</AnimatedSpan>
@@ -426,7 +426,7 @@ export function Features() {
                             <AnimatedSpan className="text-green-500">✓ GitHub connected</AnimatedSpan>
                             <AnimatedSpan className="text-green-500">✓ Deploying to Vercel...</AnimatedSpan>
 
-                            <AnimatedSpan className="text-zinc-400">⏳ Deployment in progress...</AnimatedSpan>
+                            <AnimatedSpan className="text-zinc-400"> Deployment in progress...</AnimatedSpan>
                             <AnimatedSpan className="text-zinc-400">[████████████████████] 100%</AnimatedSpan>
 
                             <AnimatedSpan className="text-green-500">✓ Build complete!</AnimatedSpan>
@@ -436,10 +436,10 @@ export function Features() {
 
                             <AnimatedSpan className="text-zinc-600">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</AnimatedSpan>
 
-                            <AnimatedSpan className="text-white font-bold text-base">🎉 Your app is LIVE!</AnimatedSpan>
+                            <AnimatedSpan className="text-white font-bold text-base"> Your app is LIVE!</AnimatedSpan>
                             <AnimatedSpan className="text-emerald-400 font-bold">→ https://my-ai-wrapper.vercel.app</AnimatedSpan>
 
-                            <AnimatedSpan className="text-zinc-500">Done in 4m 32s. Happy building! 🚀</AnimatedSpan>
+                            <AnimatedSpan className="text-zinc-500">Done in 4m 32s. Happy building! </AnimatedSpan>
                         </Terminal>
                     </div>
                 </motion.div>

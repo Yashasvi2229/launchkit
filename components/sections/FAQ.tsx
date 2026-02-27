@@ -19,7 +19,7 @@ const faqItems = [
   {
     question: "Is this just a bundle of prompts?",
     answer:
-      "No. You get 5 complete, production-ready SaaS templates, plus the invisible 'AI Layer' — the .cursorrules, the domain context maps, and a library of 200+ established patterns that ensure your AI writes secure, consistent code.",
+      "No. You get 5 complete, production-ready SaaS templates, plus the invisible 'AI Layer' — the .cursorrules, the domain context maps, and a library of numerous established patterns that ensure your AI writes secure, consistent code.",
   },
   {
     question: "I already know how to code, is this for me?",

@@ -26,7 +26,7 @@ export function FinalCTA() {
             Start shipping.
           </h2>
           <p className="text-zinc-500 mb-10 text-[16px] leading-relaxed max-w-xl mx-auto">
-            Generic templates force you to spend 20 minutes debugging AI errors. LaunchX gives your AI the context to get it right the first time.
+            Generic templates force you to spend hours debugging AI errors. LaunchX gives your AI the context to get it right the first time.
             <br className="hidden md:block" />
             Join <span className="text-white font-medium">other developers</span> skipping the debugging phase.
           </p>

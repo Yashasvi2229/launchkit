@@ -15,7 +15,7 @@ const steps = [
         number: "02",
         title: "Run the setup",
         description:
-            "npx launchkit-setup auto-configures env variables, connects Clerk, Supabase, and Stripe.",
+            "npx launchx-setup auto-configures env variables, connects Clerk, Supabase, and Stripe.",
     },
     {
         number: "03",

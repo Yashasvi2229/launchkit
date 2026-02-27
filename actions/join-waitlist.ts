@@ -83,7 +83,7 @@ export async function joinWaitlist(prevState: any, formData: FormData) {
                                 — The LaunchX Team
                             </p>
                             <p style="font-size: 12px; color: #52525b; margin: 16px 0 0 0;">
-                                If you have any questions, simply reply to this email.
+                                If you have any questions, connect with us on <a href="https://x.com/lauuunchx" target="_blank" style="color: #ffffff; text-decoration: none;">X</a>.
                             </p>
                         </div>
                     </div>

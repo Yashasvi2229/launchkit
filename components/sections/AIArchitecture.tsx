@@ -28,7 +28,7 @@ const layers = [
         title: "Never repeats the same mistake twice",
         description:
             "Every pattern has a Build, Verify, Debug prompt entry. The AI checks the library, loads the right conventions, and writes consistent code — no guessing, no hallucinations.",
-        stats: "200+ prompts, 12 categories, token-efficient",
+        stats: "Multiple prompts, 12 categories, token-efficient",
     },
 ];
 

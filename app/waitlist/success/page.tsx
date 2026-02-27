@@ -36,13 +36,11 @@ export default function WaitlistSuccessPage() {
                             </h1>
 
                             <p className="text-zinc-400 text-sm leading-relaxed mb-2">
-                                We&apos;ve sent you a welcome email with your
-                                <span className="text-emerald-400 font-medium"> 50% off </span>
-                                discount code.
+                                We&apos;ve sent you a welcome email, follow our socials for updates.
                             </p>
 
                             <p className="text-zinc-500 text-xs mb-8">
-                                Check your inbox (and spam folder, just in case).
+                                Check your inbox (and promotions tab, just in case).
                             </p>
 
                             <div className="space-y-3">
@@ -52,6 +50,15 @@ export default function WaitlistSuccessPage() {
                                     onClick={() => (window.location.href = "/waitlist/survey" + window.location.search)}
                                 >
                                     Help us improve {'->'}
+                                </Button>
+
+                                <Button
+                                    variant="default"
+                                    className="w-full bg-[#1DA1F2]/10 border border-[#1DA1F2]/20 text-white hover:bg-[#1DA1F2]/20 hover:border-[#1DA1F2]/30 h-11 rounded-xl text-[13px] flex items-center justify-center gap-2"
+                                    onClick={() => window.open("https://x.com/lauuunchx", "_blank")}
+                                >
+                                    <svg viewBox="0 0 24 24" aria-hidden="true" className="w-[14px] h-[14px] fill-current"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 24.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+                                    Follow us on X
                                 </Button>
 
                                 <Button

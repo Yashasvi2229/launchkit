@@ -48,9 +48,7 @@ export default function WaitlistPage() {
                                 <p className="text-zinc-400 text-sm">
                                     Get early access to LaunchX.
                                 </p>
-                                <p className="text-xs text-zinc-500 mt-1.5">
-                                    Sign up and we will send you the 50% off code.
-                                </p>
+
                             </div>
 
                             {/* Form */}

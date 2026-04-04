@@ -30,14 +30,8 @@ export default function DocsPage() {
               <div id="prerequisites" className="scroll-mt-32">
                 <h3 className="text-xl font-space font-medium mb-4" style={{ color: "var(--mex-text)" }}>Prerequisites</h3>
                 <ul className="space-y-3 ms-6 list-disc marker:text-[var(--mex-border)]" style={{ color: "var(--mex-text-muted)" }}>
-                  <li><strong style={{ color: "var(--mex-text)" }}>Node.js (v18 or later)</strong> — required for the CLI engine (drift detection, sync, scanner)</li>
-                  <li><strong style={{ color: "var(--mex-text)" }}>Git</strong> — required for cloning mex and for staleness detection</li>
-                  <li>
-                    <strong style={{ color: "var(--mex-text)" }}>Bash-compatible shell</strong> — required for the shell scripts (<code className="font-mono text-[13px] px-1.5 py-0.5 rounded bg-[var(--mex-bg-3)] text-[var(--mex-primary)] border" style={{ borderColor: 'var(--mex-border)' }}>setup.sh</code>, <code className="font-mono text-[13px] px-1.5 py-0.5 rounded bg-[var(--mex-bg-3)] text-[var(--mex-primary)] border" style={{ borderColor: 'var(--mex-border)' }}>sync.sh</code>, <code className="font-mono text-[13px] px-1.5 py-0.5 rounded bg-[var(--mex-bg-3)] text-[var(--mex-primary)] border" style={{ borderColor: 'var(--mex-border)' }}>update.sh</code>). Works out of the box on macOS and Linux. 
-                    <div className="mt-3 p-4 rounded-lg border bg-[var(--mex-bg-3)] text-[14px]" style={{ borderColor: 'var(--mex-border)' }}>
-                      <strong style={{ color: "var(--mex-text)" }}>Windows Users:</strong> Use <a href="https://learn.microsoft.com/en-us/windows/wsl/install" target="_blank" rel="noreferrer" className="text-[var(--mex-primary)] hover:underline border-b border-transparent hover:border-[var(--mex-primary)] transition-colors">WSL</a>, <a href="https://gitforwindows.org/" target="_blank" rel="noreferrer" className="text-[var(--mex-primary)] hover:underline border-b border-transparent hover:border-[var(--mex-primary)] transition-colors">Git Bash</a>, or any bash-compatible terminal.
-                    </div>
-                  </li>
+                  <li><strong style={{ color: "var(--mex-text)" }}>Node.js (v20 or later)</strong> — required for the CLI engine (drift detection, sync, scanner)</li>
+                  <li><strong style={{ color: "var(--mex-text)" }}>Git</strong> — recommended for staleness detection</li>
                   <li><strong style={{ color: "var(--mex-text)" }}>An AI coding tool</strong> — Claude Code, Cursor, Windsurf, or GitHub Copilot. mex generates context files that these tools read automatically</li>
                 </ul>
               </div>
@@ -45,7 +39,7 @@ export default function DocsPage() {
               <div id="setup" className="scroll-mt-32">
                 <h3 className="text-xl font-space font-medium mb-4" style={{ color: "var(--mex-text)" }}>Setup</h3>
                 <p className="mb-4 text-[15px]" style={{ color: "var(--mex-text-muted)" }}>From your project root:</p>
-                
+
                 <div className="mb-8 rounded-xl overflow-hidden border shadow-sm" style={{ borderColor: 'var(--mex-border)', background: 'var(--mex-bg-3)' }}>
                   <div className="flex items-center px-4 py-3 border-b bg-black/20" style={{ borderColor: 'var(--mex-border)' }}>
                     <div className="flex gap-1.5">
@@ -55,20 +49,19 @@ export default function DocsPage() {
                     </div>
                   </div>
                   <div className="p-5 font-mono text-[13px] md:text-[14px] leading-relaxed text-[#a1a1aa]">
-                    <div><span className="text-emerald-400">git clone</span> https://github.com/theDakshJaitly/mex.git .mex</div>
-                    <div><span className="text-emerald-400">bash</span> .mex/setup.sh</div>
+                    <div><span className="text-emerald-400">npx</span> promexeus setup</div>
                   </div>
                 </div>
 
-                <p className="mb-5 font-medium" style={{ color: "var(--mex-text)" }}>The setup script does the following, in order:</p>
+                <p className="mb-5 font-medium" style={{ color: "var(--mex-text)" }}>The setup command does the following, in order:</p>
                 <ol className="space-y-5 ms-6 list-decimal marker:font-mono marker:text-[var(--mex-primary)]" style={{ color: "var(--mex-text-muted)" }}>
-                  <li className="pl-1">
-                    <strong style={{ color: "var(--mex-text)" }}>Builds the CLI</strong><br/>
-                    Runs <code className="font-mono text-[13px] px-1.5 py-0.5 rounded bg-[var(--mex-bg-3)] border" style={{ borderColor: 'var(--mex-border)' }}>npm install</code> and <code className="font-mono text-[13px] px-1.5 py-0.5 rounded bg-[var(--mex-bg-3)] border" style={{ borderColor: 'var(--mex-border)' }}>npm run build</code> inside <code className="font-mono text-[13px] px-1.5 py-0.5 rounded bg-[var(--mex-bg-3)]">.mex/</code>. If Node.js isn't available, it skips this step and continues (the scaffold still works, you just won't have CLI commands).
-                  </li>
                   <li className="pl-1">
                     <strong style={{ color: "var(--mex-text)" }}>Detects project state</strong><br/>
                     Scans for source files to determine if this is an existing codebase, a fresh project, or a partially populated scaffold.
+                  </li>
+                  <li className="pl-1">
+                    <strong style={{ color: "var(--mex-text)" }}>Creates the .mex/ scaffold</strong><br/>
+                    Copies all template files into <code className="font-mono text-[13px] px-1.5 py-0.5 rounded bg-[var(--mex-bg-3)]">.mex/</code> in your project. If any files are already populated, they are skipped.
                   </li>
                   <li className="pl-1">
                     <strong style={{ color: "var(--mex-text)" }}>Copies tool config</strong><br/>
@@ -76,7 +69,7 @@ export default function DocsPage() {
                   </li>
                   <li className="pl-1">
                     <strong style={{ color: "var(--mex-text)" }}>Pre-scans the codebase</strong><br/>
-                    If the CLI was built successfully and source files exist, runs <code className="font-mono text-[13px] px-1.5 py-0.5 rounded bg-[var(--mex-bg-3)] text-[var(--mex-primary)] border" style={{ borderColor: 'var(--mex-border)' }}>mex init --json</code> to generate a structured brief of your codebase (entry points, dependencies, folder structure, tooling). This brief is fed to the AI so it doesn't have to explore the filesystem itself (~5-8k tokens vs ~50k).
+                    If source files exist, runs the built-in scanner to generate a structured brief of your codebase (entry points, dependencies, folder structure, tooling). This brief is fed to the AI so it doesn't have to explore the filesystem itself (~5-8k tokens vs ~50k).
                   </li>
                   <li className="pl-1">
                     <strong style={{ color: "var(--mex-text)" }}>Populates the scaffold</strong><br/>
@@ -92,26 +85,34 @@ export default function DocsPage() {
 
               <div id="using-mex" className="scroll-mt-32">
                 <h3 className="text-xl font-space font-medium mb-4" style={{ color: "var(--mex-text)" }}>Using the mex command</h3>
-                <p className="mb-4 text-[15px]" style={{ color: "var(--mex-text-muted)" }}>After setup, the CLI is available at <code className="font-mono text-[13px] px-1.5 py-0.5 rounded border bg-[var(--mex-bg-3)]" style={{ borderColor: 'var(--mex-border)' }}>node .mex/dist/cli.js</code>. To use the shorter <code className="font-mono text-[13px] px-1.5 py-0.5 rounded bg-[var(--mex-bg-3)] text-[var(--mex-primary)] border" style={{ borderColor: 'var(--mex-border)' }}>mex</code> command instead:</p>
-                
+                <p className="mb-4 text-[15px]" style={{ color: "var(--mex-text-muted)" }}>For ongoing use, install mex as a dev dependency:</p>
+
                 <div className="mb-4 rounded-xl overflow-hidden border" style={{ borderColor: 'var(--mex-border)', background: 'var(--mex-bg-3)' }}>
                   <div className="p-5 font-mono text-[13px] md:text-[14px] leading-relaxed text-[#a1a1aa] bg-black/20">
-                    <div><span className="text-emerald-400">cd</span> .mex <span className="text-[#3f3f46]">&&</span> <span className="text-emerald-400">npm</span> link <span className="text-[#3f3f46]">&&</span> <span className="text-emerald-400">cd</span> ..</div>
+                    <div><span className="text-emerald-400">npm</span> install --save-dev promexeus</div>
                   </div>
                 </div>
-                <p className="text-[15px]" style={{ color: "var(--mex-text-muted)" }}>This creates a global symlink. After linking, you can run <code className="font-mono text-[13px] px-1.5 py-0.5 rounded border bg-[var(--mex-bg-3)] text-[var(--mex-primary)]" style={{ borderColor: 'var(--mex-border)' }}>mex check</code>, <code className="font-mono text-[13px] px-1.5 py-0.5 rounded border bg-[var(--mex-bg-3)] text-[var(--mex-primary)]" style={{ borderColor: 'var(--mex-border)' }}>mex sync</code>, etc. from your project root.</p>
+                <p className="text-[15px]" style={{ color: "var(--mex-text-muted)" }}>Then you can run <code className="font-mono text-[13px] px-1.5 py-0.5 rounded border bg-[var(--mex-bg-3)] text-[var(--mex-primary)]" style={{ borderColor: 'var(--mex-border)' }}>mex check</code>, <code className="font-mono text-[13px] px-1.5 py-0.5 rounded border bg-[var(--mex-bg-3)] text-[var(--mex-primary)]" style={{ borderColor: 'var(--mex-border)' }}>mex sync</code>, etc. from your project root. You can also add scripts to your <code className="font-mono text-[13px]">package.json</code>:</p>
+                <div className="mt-4 mb-4 rounded-xl overflow-hidden border" style={{ borderColor: 'var(--mex-border)', background: 'var(--mex-bg-3)' }}>
+                  <div className="p-5 font-mono text-[13px] md:text-[14px] leading-relaxed text-[#a1a1aa] bg-black/20">
+                    <div><span className="text-[#52525b]">{`"scripts": {`}</span></div>
+                    <div><span className="text-[#52525b]">{"  "}</span><span className="text-emerald-400">{`"mex"`}</span>: <span className="text-amber-300">{`"mex check"`}</span>,</div>
+                    <div><span className="text-[#52525b]">{"  "}</span><span className="text-emerald-400">{`"mex:sync"`}</span>: <span className="text-amber-300">{`"mex sync"`}</span></div>
+                    <div><span className="text-[#52525b]">{`}`}</span></div>
+                  </div>
+                </div>
               </div>
 
               <div id="updating" className="scroll-mt-32">
                 <h3 className="text-xl font-space font-medium mb-4" style={{ color: "var(--mex-text)" }}>Updating mex</h3>
-                <p className="mb-4 text-[15px]" style={{ color: "var(--mex-text-muted)" }}>To pull the latest mex infrastructure without touching your populated content:</p>
-                
+                <p className="mb-4 text-[15px]" style={{ color: "var(--mex-text-muted)" }}>To update to the latest version:</p>
+
                 <div className="mb-4 rounded-xl overflow-hidden border" style={{ borderColor: 'var(--mex-border)', background: 'var(--mex-bg-3)' }}>
                   <div className="p-5 font-mono text-[13px] md:text-[14px] leading-relaxed text-[#a1a1aa] bg-black/20">
-                    <div><span className="text-emerald-400">bash</span> .mex/update.sh</div>
+                    <div><span className="text-emerald-400">npm</span> update promexeus</div>
                   </div>
                 </div>
-                <p className="text-[15px] leading-relaxed" style={{ color: "var(--mex-text-muted)" }}>This fetches the latest version from GitHub and updates only infrastructure files — shell scripts, CLI source code, <code className="font-mono text-[13px]">package.json</code>, test files, and tool configs. Your content files (<code className="font-mono text-[13px]">ROUTER.md</code>, <code className="font-mono text-[13px]">AGENTS.md</code>, context files, patterns) are <strong style={{ color: 'var(--mex-text)' }}>never overwritten</strong>. If CLI source files changed, it automatically rebuilds the CLI.</p>
+                <p className="text-[15px] leading-relaxed" style={{ color: "var(--mex-text-muted)" }}>This updates the CLI and drift detection engine. Your content files (<code className="font-mono text-[13px]">ROUTER.md</code>, <code className="font-mono text-[13px]">AGENTS.md</code>, context files, patterns) are <strong style={{ color: 'var(--mex-text)' }}>never touched</strong> — they live in your project's <code className="font-mono text-[13px]">.mex/</code> directory, not in the package.</p>
               </div>
 
               <div id="contributors" className="scroll-mt-32">
@@ -408,9 +409,7 @@ export default function DocsPage() {
             <div className="border-b pb-6" style={{ borderColor: "var(--mex-border)" }}>
               <h2 className="text-3xl font-space font-semibold mb-4 text-white">3. CLI Commands</h2>
               <p className="text-[16px] leading-relaxed" style={{ color: "var(--mex-text-muted)" }}>
-                All CLI commands run from your project root (not from inside <code className="font-mono text-[13px] px-1.5 py-0.5 rounded bg-[var(--mex-bg-3)] border" style={{ borderColor: 'var(--mex-border)' }}>.mex/</code>). The CLI locates the scaffold by walking up to the git root and looking for a <code className="font-mono text-[13px] px-1.5 py-0.5 rounded bg-[var(--mex-bg-3)] border" style={{ borderColor: 'var(--mex-border)' }}>.mex/</code> directory.
-                <br /><br />
-                If you've run <code className="font-mono text-[13px] px-1.5 py-0.5 rounded bg-[var(--mex-bg-3)] border text-[var(--mex-primary)]" style={{ borderColor: 'var(--mex-border)' }}>npm link</code>, use <code className="font-mono text-[13px] px-1.5 py-0.5 rounded bg-[var(--mex-bg-3)] border text-white" style={{ borderColor: 'var(--mex-border)' }}>mex &lt;command&gt;</code>. Otherwise, use <code className="font-mono text-[13px] px-1.5 py-0.5 rounded bg-[var(--mex-bg-3)] border text-white" style={{ borderColor: 'var(--mex-border)' }}>node .mex/dist/cli.js &lt;command&gt;</code>.
+                All CLI commands run from your project root (not from inside <code className="font-mono text-[13px] px-1.5 py-0.5 rounded bg-[var(--mex-bg-3)] border" style={{ borderColor: 'var(--mex-border)' }}>.mex/</code>). After installing with <code className="font-mono text-[13px] px-1.5 py-0.5 rounded bg-[var(--mex-bg-3)] border text-[var(--mex-primary)]" style={{ borderColor: 'var(--mex-border)' }}>npm install --save-dev promexeus</code>, use <code className="font-mono text-[13px] px-1.5 py-0.5 rounded bg-[var(--mex-bg-3)] border text-white" style={{ borderColor: 'var(--mex-border)' }}>mex &lt;command&gt;</code>. The CLI locates the scaffold by walking up to the git root and looking for a <code className="font-mono text-[13px] px-1.5 py-0.5 rounded bg-[var(--mex-bg-3)] border" style={{ borderColor: 'var(--mex-border)' }}>.mex/</code> directory.
               </p>
             </div>
 
@@ -533,7 +532,7 @@ export default function DocsPage() {
             <div id="cli-init" className="scroll-mt-32">
               <h3 className="text-2xl font-mono text-[var(--mex-primary)] font-medium border-b border-[#27272a] pb-3 mb-6">mex init</h3>
               <p className="mb-6 text-[15px] leading-relaxed" style={{ color: "var(--mex-text-muted)" }}>
-                Scans the codebase and generates a structured brief for AI consumption. This is what <code className="font-mono text-white">setup.sh</code> runs internally during first-time setup.
+                Scans the codebase and generates a structured brief for AI consumption. This is what <code className="font-mono text-white">mex setup</code> runs internally during first-time setup.
               </p>
 
               <p className="text-white font-medium mb-3">The scanner analyzes five dimensions of the project:</p>
@@ -633,9 +632,9 @@ export default function DocsPage() {
             {/* Shell Scripts */}
             <div id="cli-shell" className="scroll-mt-32 mt-12 bg-zinc-950 border border-zinc-800 rounded-xl p-6 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-64 h-64 bg-zinc-800 opacity-20 blur-[100px] rounded-full pointer-events-none" />
-              <h3 className="text-2xl font-space font-semibold mb-4 text-white">Shell Scripts</h3>
+              <h3 className="text-2xl font-space font-semibold mb-4 text-white">Shell Scripts (alternative)</h3>
               <p className="mb-6 text-[15px] leading-relaxed" style={{ color: "var(--mex-text-muted)" }}>
-                These are bash scripts that run from your project root. They auto-build the CLI if needed. All support <code className="font-mono text-[13px] text-white">--help</code>.
+                If you installed via git clone, these bash scripts are also available. They run from your project root and support <code className="font-mono text-[13px] text-white">--help</code>.
               </p>
 
               <div className="bg-[#09090b] border rounded-xl overflow-x-auto mb-6" style={{ borderColor: 'var(--mex-border)' }}>
@@ -649,7 +648,7 @@ export default function DocsPage() {
                   <tbody className="divide-y divide-[#27272a] text-[var(--mex-text)]">
                     <tr className="hover:bg-[#111]/50 transition-colors">
                       <td className="px-5 py-4 font-mono text-[13px] text-white">bash .mex/setup.sh</td>
-                      <td className="px-5 py-4 leading-relaxed" style={{ color: "var(--mex-text-muted)" }}>First-time setup — detects project state, copies tool config, scans codebase, launches AI to populate the scaffold. Supports <code className="font-mono text-white">--dry-run</code></td>
+                      <td className="px-5 py-4 leading-relaxed" style={{ color: "var(--mex-text-muted)" }}>First-time setup — same as <code className="font-mono text-white">npx promexeus setup</code> but as a bash script. Supports <code className="font-mono text-white">--dry-run</code></td>
                     </tr>
                     <tr className="hover:bg-[#111]/50 transition-colors">
                       <td className="px-5 py-4 font-mono text-[13px] text-white">bash .mex/sync.sh</td>
@@ -657,15 +656,11 @@ export default function DocsPage() {
                     </tr>
                     <tr className="hover:bg-[#111]/50 transition-colors">
                       <td className="px-5 py-4 font-mono text-[13px] text-white">bash .mex/update.sh</td>
-                      <td className="px-5 py-4 leading-relaxed" style={{ color: "var(--mex-text-muted)" }}>Pulls latest mex infrastructure from GitHub without touching your populated content. Auto-rebuilds CLI if source files changed.</td>
+                      <td className="px-5 py-4 leading-relaxed" style={{ color: "var(--mex-text-muted)" }}>Pulls latest mex infrastructure from GitHub. For npm users, use <code className="font-mono text-white">npm update promexeus</code> instead.</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
-
-              <p className="text-[13px] leading-relaxed text-[#a1a1aa]">
-                <strong className="text-white font-medium uppercase tracking-wider text-[11px] mr-2">Platform Note</strong> The CLI commands (<code className="font-mono text-white">node .mex/dist/cli.js ...</code>) work on any platform with Node.js, including Windows cmd and PowerShell. The shell scripts require a bash-compatible shell.
-              </p>
             </div>
           </section>
 
@@ -1267,9 +1262,9 @@ export default function DocsPage() {
           {/* SECTION 6: Shell Scripts */}
           <section id="shell-scripts" className="scroll-mt-32 space-y-12 mb-32 relative">
             <div className="border-b pb-6" style={{ borderColor: "var(--mex-border)" }}>
-              <h2 className="text-3xl font-space font-semibold mb-4 text-white">6. Shell Scripts</h2>
+              <h2 className="text-3xl font-space font-semibold mb-4 text-white">6. Shell Scripts (git clone only)</h2>
               <p className="text-[15px] leading-relaxed mb-4" style={{ color: "var(--mex-text-muted)" }}>
-                mex includes four shell scripts that run from your project root. All are bash scripts requiring a bash-compatible shell (native on macOS/Linux, WSL or Git Bash on Windows). All support <code className="font-mono text-white text-[13px] px-1.5 py-0.5 bg-[#111] border border-[#333] rounded">--help</code>.
+                If you installed via <code className="font-mono text-white text-[13px] px-1.5 py-0.5 bg-[#111] border border-[#333] rounded">git clone</code> instead of <code className="font-mono text-white text-[13px] px-1.5 py-0.5 bg-[#111] border border-[#333] rounded">npx promexeus setup</code>, these bash scripts are available. They require a bash-compatible shell (native on macOS/Linux, WSL or Git Bash on Windows). All support <code className="font-mono text-white text-[13px] px-1.5 py-0.5 bg-[#111] border border-[#333] rounded">--help</code>.
               </p>
             </div>
 
@@ -1278,9 +1273,9 @@ export default function DocsPage() {
               <div className="flex items-center gap-4 border-b border-[#27272a] pb-3 mb-6 relative">
                 <h3 className="text-2xl font-mono text-[var(--mex-primary)] font-medium">bash .mex/setup.sh</h3>
               </div>
-              
+
               <p className="text-[15px] leading-relaxed mb-6" style={{ color: "var(--mex-text-muted)" }}>
-                The entry point for new projects. Runs a 6-step process:
+                The bash alternative to <code className="font-mono text-white text-[13px] px-1.5 py-0.5 bg-[#111] border border-[#333] rounded">npx promexeus setup</code>. Same 6-step process:
               </p>
 
               <div className="space-y-6">
@@ -1379,7 +1374,7 @@ export default function DocsPage() {
                   <div className="absolute top-0 left-0 w-1 h-full bg-[var(--mex-primary)]" />
                   <h4 className="text-[15px] font-space font-medium text-white mb-2 ml-2">Step 6: Run or print</h4>
                   <p className="text-[14px] text-[#a1a1aa] ml-2 leading-relaxed">
-                    If Claude Code was selected and the CLI is installed, launches an interactive Claude session directly. Otherwise, prints the prompt between copy markers for manual pasting. After completion, shows available commands and a tip to <code className="font-mono text-white text-[12px]">npm link</code> for the <code className="font-mono text-white text-[12px]">mex</code> shorthand.
+                    If Claude Code was selected and the CLI is installed, launches an interactive Claude session directly. Otherwise, prints the prompt between copy markers for manual pasting. After completion, shows available commands and suggests installing <code className="font-mono text-white text-[12px]">promexeus</code> as a dev dependency for ongoing use.
                   </p>
                 </div>
               </div>
@@ -1612,7 +1607,7 @@ export default function DocsPage() {
             <div id="multi-tool-auto" className="scroll-mt-32">
               <h3 className="text-xl font-space font-medium mb-4 text-white">Automatic Setup</h3>
               <p className="text-[14px] leading-relaxed text-[#a1a1aa] mb-4">
-                During <code className="font-mono text-white text-[12px] bg-[#111] px-1.5 py-0.5 rounded border border-[#333]">bash .mex/setup.sh</code>, you're asked which tool you use:
+                During <code className="font-mono text-white text-[12px] bg-[#111] px-1.5 py-0.5 rounded border border-[#333]">mex setup</code>, you're asked which tool you use:
               </p>
               
               <div className="bg-[#09090b] border border-[#27272a] rounded-xl p-0 overflow-hidden mb-6 flex flex-col mx-auto max-w-2xl font-mono text-[13px] shadow-lg">
@@ -1622,7 +1617,7 @@ export default function DocsPage() {
                     <div className="w-3 h-3 rounded-full bg-yellow-500/20 border border-yellow-500/50" />
                     <div className="w-3 h-3 rounded-full bg-green-500/20 border border-green-500/50" />
                   </div>
-                  <span className="ml-2 text-[12px]">setup.sh</span>
+                  <span className="ml-2 text-[12px]">mex setup</span>
                 </div>
                 <div className="p-5 text-[#d4d4d8] leading-loose">
                   <div className="text-[var(--mex-primary)] mb-2">? Which AI tool do you use?</div>
@@ -1773,13 +1768,8 @@ export default function DocsPage() {
               <div className="flex"><span className="text-[#555] select-none mr-2">│   │   ├──</span> <span className="text-[#888]">README.md</span><span className="ml-[58px] text-[#555]">← pattern format spec and category guide</span></div>
               <div className="flex"><span className="text-[#555] select-none mr-2">│   │   ├──</span> <span className="text-[#d4d4d8]">INDEX.md</span><span className="ml-[66px] text-[#555]">← lookup table for all patterns</span></div>
               <div className="flex"><span className="text-[#555] select-none mr-2">│   │   └──</span> <span className="text-[#d4d4d8]">*.md</span><span className="ml-[98px] text-[#555]">← task-specific guides (created during setup and GROW)</span></div>
-              <div className="flex"><span className="text-[#555] select-none mr-2">│   ├──</span> <span className="text-[#888]">.tool-configs/</span><span className="ml-[17px] text-[#555]">← config file templates for each AI tool</span></div>
-              <div className="flex"><span className="text-[#555] select-none mr-2">│   ├──</span> <span className="text-[#888]">src/</span><span className="ml-[98px] text-[#555]">← CLI source code (TypeScript)</span></div>
-              <div className="flex"><span className="text-[#555] select-none mr-2">│   ├──</span> <span className="text-[#888]">test/</span><span className="ml-[90px] text-[#555]">← test suite</span></div>
-              <div className="flex"><span className="text-[#555] select-none mr-2">│   ├──</span> <span className="text-purple-400">setup.sh</span><span className="ml-[66px] text-[#555]">← first-time setup</span></div>
-              <div className="flex"><span className="text-[#555] select-none mr-2">│   ├──</span> <span className="text-purple-400">sync.sh</span><span className="ml-[74px] text-[#555]">← interactive sync menu</span></div>
-              <div className="flex"><span className="text-[#555] select-none mr-2">│   ├──</span> <span className="text-purple-400">update.sh</span><span className="ml-[58px] text-[#555]">← pull latest infrastructure</span></div>
-              <div className="flex"><span className="text-[#555] select-none mr-2">│   └──</span> <span className="text-purple-400">visualize.sh</span><span className="ml-[34px] text-[#555]">← scaffold graph visualization</span></div>
+              <div className="flex"><span className="text-[#555] select-none mr-2">│   ├──</span> <span className="text-[#888]">SETUP.md</span><span className="ml-[66px] text-[#555]">← setup reference and prompts</span></div>
+              <div className="flex"><span className="text-[#555] select-none mr-2">│   └──</span> <span className="text-[#888]">SYNC.md</span><span className="ml-[74px] text-[#555]">← sync reference and prompts</span></div>
             </div>
 
             {/* YAML Frontmatter */}

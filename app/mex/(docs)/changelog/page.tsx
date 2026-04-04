@@ -20,17 +20,32 @@ export default function ChangelogPage() {
           <div className="flex items-center justify-between border-b border-[#27272a] p-5 pb-4 bg-[#0a0a0c]">
             <div className="flex items-center gap-4">
               <span className="bg-[var(--mex-primary)] text-white text-[13px] font-space font-medium px-2.5 py-1 rounded-md shadow-[0_0_10px_rgba(65,105,225,0.3)]">v0.2.0</span>
-              <span className="text-[#888] text-[13px] tracking-wide uppercase font-space">March 29, 2026</span>
+              <span className="text-[#888] text-[13px] tracking-wide uppercase font-space">April 5, 2026</span>
             </div>
           </div>
-          
+
           <div className="p-6 space-y-8">
+            <div>
+              <h4 className="flex items-center gap-2 mb-4">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                <span className="text-[12px] font-space font-semibold text-emerald-500 uppercase tracking-wider">Added</span>
+              </h4>
+              <ul className="space-y-3 text-[15px] text-[#d4d4d8] ml-1">
+                <li className="flex gap-3 items-start"><span className="text-[#555] mt-1 text-xs">●</span><span className="leading-relaxed"><code className="text-white bg-[#111] px-1 py-0.5 rounded border border-[#333] text-[13px] font-mono">mex setup</code> command — npx-first install: <code className="text-[var(--mex-primary)] bg-[var(--mex-primary)]/10 px-1 py-0.5 rounded border border-[var(--mex-primary)]/20 text-[13px] font-mono">npx promexeus setup</code></span></li>
+                <li className="flex gap-3 items-start"><span className="text-[#555] mt-1 text-xs">●</span><span className="leading-relaxed">Bundled scaffold templates in npm package — no git clone needed</span></li>
+                <li className="flex gap-3 items-start"><span className="text-[#555] mt-1 text-xs">●</span><span className="leading-relaxed">Project state detection: fresh, existing, or partial scaffold</span></li>
+                <li className="flex gap-3 items-start"><span className="text-[#555] mt-1 text-xs">●</span><span className="leading-relaxed"><code className="text-[#a1a1aa] text-[12px] font-mono border border-[#27272a] rounded px-1 bg-[#111]">--dry-run</code> flag for setup command</span></li>
+                <li className="flex gap-3 items-start"><span className="text-[#555] mt-1 text-xs">●</span><span className="leading-relaxed">Published to npm as <code className="text-[var(--mex-primary)] text-[13px] font-mono">promexeus</code></span></li>
+              </ul>
+            </div>
+
             <div>
               <h4 className="flex items-center gap-2 mb-4">
                 <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
                 <span className="text-[12px] font-space font-semibold text-blue-400 uppercase tracking-wider">Changed</span>
               </h4>
               <ul className="space-y-3 text-[15px] text-[#d4d4d8] ml-1">
+                <li className="flex gap-3 items-start"><span className="text-[#555] mt-1 text-xs">●</span><span className="leading-relaxed">Package renamed from <code className="text-[#a1a1aa] text-[12px] font-mono">mex</code> to <code className="text-[#a1a1aa] text-[12px] font-mono">promexeus</code> for npm availability</span></li>
                 <li className="flex gap-3 items-start"><span className="text-[#555] mt-1 text-xs">●</span><span className="leading-relaxed">Sync now combines all drift issues into a single Claude session instead of launching one session per file — fewer tokens, no repeated session restarts</span></li>
               </ul>
             </div>

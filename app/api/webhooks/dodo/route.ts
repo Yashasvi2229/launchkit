@@ -54,7 +54,12 @@ export async function POST(request: NextRequest) {
 
     const payload = JSON.parse(rawBody);
 
-    switch (payload.event_type) {
+    console.log("Webhook payload keys:", Object.keys(payload));
+    console.log("Webhook payload:", JSON.stringify(payload).substring(0, 500));
+
+    const eventType = payload.event_type || payload.type || payload.event;
+
+    switch (eventType) {
         case "payment.succeeded": {
             const githubUsername = payload.data?.metadata?.github_username;
             const customerEmail = payload.data?.customer?.email;

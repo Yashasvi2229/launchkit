@@ -22,14 +22,7 @@ export async function createPayment(data: {
     }
 
     try {
-        const response = await getDodo().payments.create({
-            billing: {
-                city: null,
-                country: "US",
-                state: null,
-                street: null,
-                zipcode: null,
-            },
+        const response = await getDodo().checkoutSessions.create({
             customer: {
                 email: result.data.email,
                 name: result.data.name,
@@ -44,11 +37,18 @@ export async function createPayment(data: {
                 },
             ],
             return_url: "https://launchx.page/templates/general-saas?payment=success",
+            customization: {
+                theme: "dark",
+            },
         });
 
-        return { checkout_url: response.payment_link };
+        if (!response.checkout_url) {
+            return { error: "Failed to create checkout session." };
+        }
+
+        return { checkout_url: response.checkout_url };
     } catch (error) {
-        console.error("Failed to create payment:", error);
+        console.error("Failed to create checkout session:", error);
         return { error: "Failed to create payment. Please try again." };
     }
 }

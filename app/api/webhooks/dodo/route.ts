@@ -3,12 +3,29 @@ import { NextRequest, NextResponse } from "next/server";
 import { getResend } from "@/lib/resend/client";
 
 export async function POST(request: NextRequest) {
-    const signature = request.headers.get("x-dodo-signature");
+    const rawBody = await request.text();
+
+    // Log all headers for debugging webhook signature
+    const allHeaders: Record<string, string> = {};
+    request.headers.forEach((value, key) => {
+        allHeaders[key] = value;
+    });
+    console.log("Webhook headers:", JSON.stringify(allHeaders));
+    console.log("Webhook body preview:", rawBody.substring(0, 200));
+
+    // Try multiple possible header names
+    const signature =
+        request.headers.get("webhook-signature") ||
+        request.headers.get("x-dodo-signature") ||
+        request.headers.get("x-webhook-signature") ||
+        request.headers.get("signature");
+
     if (!signature) {
+        console.error("No signature header found. Available headers:", Object.keys(allHeaders).join(", "));
         return NextResponse.json({ error: "Missing signature" }, { status: 401 });
     }
 
-    const rawBody = await request.text();
+    console.log("Signature found:", signature.substring(0, 50) + "...");
 
     const secret = process.env.DODO_WEBHOOK_SECRET;
     if (!secret) {
@@ -21,11 +38,20 @@ export async function POST(request: NextRequest) {
         .update(rawBody)
         .digest("hex");
 
-    const sigBuffer = Buffer.from(signature, "hex");
-    const expectedBuffer = Buffer.from(expectedSignature, "hex");
+    console.log("Expected signature:", expectedSignature.substring(0, 20) + "...");
+    console.log("Received signature:", signature.substring(0, 20) + "...");
 
-    if (sigBuffer.length !== expectedBuffer.length || !crypto.timingSafeEqual(sigBuffer, expectedBuffer)) {
-        return NextResponse.json({ error: "Invalid signature" }, { status: 401 });
+    try {
+        const sigBuffer = Buffer.from(signature, "hex");
+        const expectedBuffer = Buffer.from(expectedSignature, "hex");
+
+        if (sigBuffer.length !== expectedBuffer.length || !crypto.timingSafeEqual(sigBuffer, expectedBuffer)) {
+            console.error("Signature mismatch. Lengths:", sigBuffer.length, expectedBuffer.length);
+            return NextResponse.json({ error: "Invalid signature" }, { status: 401 });
+        }
+    } catch (err) {
+        console.error("Signature verification error:", err);
+        return NextResponse.json({ error: "Signature verification failed" }, { status: 401 });
     }
 
     const payload = JSON.parse(rawBody);

@@ -2,56 +2,54 @@ import crypto from "crypto";
 import { NextRequest, NextResponse } from "next/server";
 import { getResend } from "@/lib/resend/client";
 
-export async function POST(request: NextRequest) {
-    const rawBody = await request.text();
-
-    // Log all headers for debugging webhook signature
-    const allHeaders: Record<string, string> = {};
-    request.headers.forEach((value, key) => {
-        allHeaders[key] = value;
-    });
-    console.log("Webhook headers:", JSON.stringify(allHeaders));
-    console.log("Webhook body preview:", rawBody.substring(0, 200));
-
-    // Try multiple possible header names
-    const signature =
-        request.headers.get("webhook-signature") ||
-        request.headers.get("x-dodo-signature") ||
-        request.headers.get("x-webhook-signature") ||
-        request.headers.get("signature");
-
-    if (!signature) {
-        console.error("No signature header found. Available headers:", Object.keys(allHeaders).join(", "));
-        return NextResponse.json({ error: "Missing signature" }, { status: 401 });
-    }
-
-    console.log("Signature found:", signature.substring(0, 50) + "...");
-
+function verifyWebhookSignature(rawBody: string, request: NextRequest): boolean {
     const secret = process.env.DODO_WEBHOOK_SECRET;
     if (!secret) {
         console.error("Missing DODO_WEBHOOK_SECRET environment variable");
-        return NextResponse.json({ error: "Server configuration error" }, { status: 500 });
+        return false;
     }
 
+    const webhookId = request.headers.get("webhook-id");
+    const webhookTimestamp = request.headers.get("webhook-timestamp");
+    const webhookSignature = request.headers.get("webhook-signature");
+
+    if (!webhookId || !webhookTimestamp || !webhookSignature) {
+        console.error("Missing Svix webhook headers");
+        return false;
+    }
+
+    // Svix secret format: "whsec_<base64>" — strip prefix and decode
+    const secretBytes = Buffer.from(
+        secret.startsWith("whsec_") ? secret.slice(6) : secret,
+        "base64"
+    );
+
+    // Svix signature payload: "${webhook-id}.${webhook-timestamp}.${body}"
+    const signedContent = `${webhookId}.${webhookTimestamp}.${rawBody}`;
+
     const expectedSignature = crypto
-        .createHmac("sha256", secret)
-        .update(rawBody)
-        .digest("hex");
+        .createHmac("sha256", secretBytes)
+        .update(signedContent)
+        .digest("base64");
 
-    console.log("Expected signature:", expectedSignature.substring(0, 20) + "...");
-    console.log("Received signature:", signature.substring(0, 20) + "...");
-
-    try {
-        const sigBuffer = Buffer.from(signature, "hex");
-        const expectedBuffer = Buffer.from(expectedSignature, "hex");
-
-        if (sigBuffer.length !== expectedBuffer.length || !crypto.timingSafeEqual(sigBuffer, expectedBuffer)) {
-            console.error("Signature mismatch. Lengths:", sigBuffer.length, expectedBuffer.length);
-            return NextResponse.json({ error: "Invalid signature" }, { status: 401 });
+    // webhook-signature can contain multiple signatures like "v1,xxx v1,yyy"
+    const signatures = webhookSignature.split(" ");
+    for (const sig of signatures) {
+        const sigValue = sig.split(",")[1];
+        if (sigValue === expectedSignature) {
+            return true;
         }
-    } catch (err) {
-        console.error("Signature verification error:", err);
-        return NextResponse.json({ error: "Signature verification failed" }, { status: 401 });
+    }
+
+    console.error("Signature mismatch");
+    return false;
+}
+
+export async function POST(request: NextRequest) {
+    const rawBody = await request.text();
+
+    if (!verifyWebhookSignature(rawBody, request)) {
+        return NextResponse.json({ error: "Invalid signature" }, { status: 401 });
     }
 
     const payload = JSON.parse(rawBody);

@@ -26,6 +26,7 @@ import { Modals } from "./sections/Modals";
 import { StyleGuide } from "./sections/StyleGuide";
 import { ThemeToggle } from "./sections/ThemeToggle";
 import { ToastNotifications } from "./sections/ToastNotifications";
+import { MigrateBetterAuth } from "./sections/MigrateBetterAuth";
 
 const SECTIONS = [
   { id: "prerequisites", component: Prerequisites },
@@ -53,6 +54,7 @@ const SECTIONS = [
   { id: "theme-toggle", component: ThemeToggle },
   { id: "modals", component: Modals },
   { id: "toast-notifications", component: ToastNotifications },
+  { id: "migrate-better-auth", component: MigrateBetterAuth },
 ];
 
 export function SingleDocsPage() {

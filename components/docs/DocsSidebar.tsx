@@ -5,7 +5,15 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ListTree, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-export const CATEGORIES = [
+type SidebarItem = { id: string; label: string };
+type Subcategory = { title: string; items: SidebarItem[] };
+type Category = {
+  title: string;
+  items?: SidebarItem[];
+  subcategories?: Subcategory[];
+};
+
+export const CATEGORIES: Category[] = [
   {
     "title": "1. Start Here",
     "items": [
@@ -140,6 +148,20 @@ export const CATEGORIES = [
         "label": "Toast Notifications"
       }
     ]
+  },
+  {
+    "title": "8. Migration Guides",
+    "subcategories": [
+      {
+        "title": "Auth Migration",
+        "items": [
+          {
+            "id": "migrate-better-auth",
+            "label": "Migrate to Better Auth"
+          }
+        ]
+      }
+    ]
   }
 ];
 
@@ -202,26 +224,61 @@ export function DocsSidebar() {
             <div className="text-[13px] font-semibold tracking-wide text-zinc-100 mb-2 uppercase">
               {category.title}
             </div>
-            <div className="flex flex-col border-l border-white/[0.08] ml-2">
-              {category.items.map((item) => {
-                const isActive = activeSection === item.id;
 
-                return (
-                  <a
-                    key={item.id}
-                    href={`#${item.id}`}
-                    onClick={(e) => handleClick(e, item.id)}
-                    className={`text-[14px] px-4 py-1.5 transition-all duration-200 ${
-                      isActive
-                        ? "text-emerald-400 font-medium bg-emerald-500/[0.04] border-l border-emerald-500 -ml-[1px]"
-                        : "text-zinc-400 hover:text-zinc-200"
-                    }`}
-                  >
-                    {item.label}
-                  </a>
-                );
-              })}
-            </div>
+            {/* Flat items */}
+            {category.items && (
+              <div className="flex flex-col border-l border-white/[0.08] ml-2">
+                {category.items.map((item) => {
+                  const isActive = activeSection === item.id;
+                  return (
+                    <a
+                      key={item.id}
+                      href={`#${item.id}`}
+                      onClick={(e) => handleClick(e, item.id)}
+                      className={`text-[14px] px-4 py-1.5 transition-all duration-200 ${
+                        isActive
+                          ? "text-emerald-400 font-medium bg-emerald-500/[0.04] border-l border-emerald-500 -ml-[1px]"
+                          : "text-zinc-400 hover:text-zinc-200"
+                      }`}
+                    >
+                      {item.label}
+                    </a>
+                  );
+                })}
+              </div>
+            )}
+
+            {/* Nested subcategories */}
+            {category.subcategories && (
+              <div className="ml-2 space-y-4 mt-1">
+                {category.subcategories.map((sub) => (
+                  <div key={sub.title}>
+                    <div className="text-[11px] font-medium tracking-wider text-zinc-500 uppercase pl-4 mb-1">
+                      {sub.title}
+                    </div>
+                    <div className="flex flex-col border-l border-white/[0.08] ml-2">
+                      {sub.items.map((item) => {
+                        const isActive = activeSection === item.id;
+                        return (
+                          <a
+                            key={item.id}
+                            href={`#${item.id}`}
+                            onClick={(e) => handleClick(e, item.id)}
+                            className={`text-[14px] px-4 py-1.5 transition-all duration-200 ${
+                              isActive
+                                ? "text-emerald-400 font-medium bg-emerald-500/[0.04] border-l border-emerald-500 -ml-[1px]"
+                                : "text-zinc-400 hover:text-zinc-200"
+                            }`}
+                          >
+                            {item.label}
+                          </a>
+                        );
+                      })}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         ))}
       </div>

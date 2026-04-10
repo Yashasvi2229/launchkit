@@ -167,17 +167,25 @@ export function GeneralSaasPage() {
             Back to LaunchX
           </a>
 
-          <h1 className="text-heading mb-4">LaunchKit SaaS Starter</h1>
+          <h1 className="text-heading mb-4">LaunchX SaaS Starter</h1>
           <p className="text-zinc-400 text-[16px] leading-relaxed max-w-2xl mb-6">
             The production-ready Next.js SaaS starter kit. Built for speed, scaled for production.
             We&apos;ve handled auth, billing, databases, emails, and SEO — so you can focus exclusively on your product.
           </p>
 
-          <div className="flex items-baseline gap-2 mb-8">
+          <div className="flex items-baseline gap-2 mb-4">
             <span className="text-zinc-600 line-through text-[20px]">$300</span>
             <span className="text-[42px] font-semibold text-emerald-400">$149</span>
             <span className="text-zinc-500 text-[14px]">/lifetime</span>
           </div>
+
+          <a
+            href="/docs"
+            className="inline-flex items-center gap-1.5 text-[13px] text-emerald-400 hover:text-emerald-300 transition-colors mb-8"
+          >
+            <ArrowRight className="w-3 h-3" />
+            Read the documentation
+          </a>
         </motion.div>
 
         {/* Mobile checkout card — inline */}

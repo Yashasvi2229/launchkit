@@ -1,0 +1,33 @@
+﻿
+promexeus@0.3.1 | MIT | deps: 9 | versions: 3
+CLI engine for mex scaffold ΓÇö drift detection, pre-analysis, and targeted sync
+https://github.com/theDakshJaitly/mex#readme
+
+keywords: ai, agents, scaffold, drift-detection, documentation, cli, claude, cursor, copilot
+
+bin: mex
+
+dist
+.tarball: https://registry.npmjs.org/promexeus/-/promexeus-0.3.1.tgz
+.shasum: 21db12705ab10b32d8f9723a6900d92b514104e2
+.integrity: sha512-gnS5GOOkyKqLpF9bbI5PQnWMRSafDR5YOb/VMYJLnusaoRAE8M1YP7kGAHYjLw7+pVw9x1wxIRDQmV9jUQUdNQ==
+.unpackedSize: 287.9 kB
+
+dependencies:
+chalk: ^5.4.1
+commander: ^13.1.0
+glob: ^11.0.1
+remark-frontmatter: ^5.0.0
+remark-parse: ^11.0.0
+simple-git: ^3.27.0
+unified: ^11.0.5
+unist-util-visit: ^5.0.0
+yaml: ^2.7.0
+
+maintainers:
+- daksh_jaitly <thedakshjaitly@gmail.com>
+
+dist-tags:
+latest: 0.3.1
+
+published yesterday by daksh_jaitly <thedakshjaitly@gmail.com>

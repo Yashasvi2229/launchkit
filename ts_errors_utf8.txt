@@ -1,0 +1,29 @@
+﻿app/docs/(docs)/security-deployment/vercel-deployment/page.tsx(112,17): error TS2657: JSX expressions must have one parent element.
+app/docs/(docs)/security-deployment/vercel-deployment/page.tsx(115,38): error TS1127: Invalid character.
+app/docs/(docs)/security-deployment/vercel-deployment/page.tsx(115,176): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+app/docs/(docs)/security-deployment/vercel-deployment/page.tsx(115,177): error TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
+app/docs/(docs)/security-deployment/vercel-deployment/page.tsx(115,185): error TS17002: Expected corresponding JSX closing tag for 'td'.
+app/docs/(docs)/security-deployment/vercel-deployment/page.tsx(116,21): error TS17002: Expected corresponding JSX closing tag for 'tr'.
+app/docs/(docs)/security-deployment/vercel-deployment/page.tsx(118,17): error TS1005: ')' expected.
+app/docs/(docs)/security-deployment/vercel-deployment/page.tsx(118,19): error TS17002: Expected corresponding JSX closing tag for 'tbody'.
+app/docs/(docs)/security-deployment/vercel-deployment/page.tsx(119,17): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+app/docs/(docs)/security-deployment/vercel-deployment/page.tsx(120,15): error TS17002: Expected corresponding JSX closing tag for 'table'.
+app/docs/(docs)/security-deployment/vercel-deployment/page.tsx(121,13): error TS17002: Expected corresponding JSX closing tag for 'div'.
+app/docs/(docs)/security-deployment/vercel-deployment/page.tsx(171,5): error TS1005: ')' expected.
+app/docs/(docs)/security-deployment/vercel-deployment/page.tsx(172,3): error TS1109: Expression expected.
+app/docs/page.tsx(116,5): error TS2657: JSX expressions must have one parent element.
+app/docs/page.tsx(159,26): error TS1127: Invalid character.
+app/docs/page.tsx(159,184): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+app/docs/page.tsx(160,13): error TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
+app/docs/page.tsx(162,33): error TS1127: Invalid character.
+app/docs/page.tsx(162,118): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+app/docs/page.tsx(162,119): error TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
+app/docs/page.tsx(177,32): error TS1127: Invalid character.
+app/docs/page.tsx(177,96): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+app/docs/page.tsx(178,19): error TS1382: Unexpected token. Did you mean `{'>'}` or `&gt;`?
+app/docs/page.tsx(180,21): error TS17002: Expected corresponding JSX closing tag for 'div'.
+app/docs/page.tsx(181,19): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?
+app/docs/page.tsx(184,31): error TS1127: Invalid character.
+app/docs/page.tsx(184,32): error TS1003: Identifier expected.
+app/docs/page.tsx(184,32): error TS1005: ')' expected.
+app/docs/page.tsx(219,1): error TS1160: Unterminated template literal.

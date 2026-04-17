@@ -264,15 +264,16 @@ export function Templates() {
                                         </button>
                                     </a>
                                 ) : (
-                                    <button
-                                        disabled
-                                        className="w-full py-2.5 rounded-xl bg-white/[0.04] border border-white/[0.06] text-[13px] text-zinc-600 font-medium cursor-not-allowed mt-auto"
-                                    >
-                                        Coming Soon
-                                    </button>
+                                                    <a href="/waitlist" className="mt-auto">
+                                                        <button className="w-full py-2.5 rounded-xl bg-white/[0.04] border border-white/[0.08] text-[13px] text-zinc-300 font-medium hover:bg-white/[0.08] transition-all duration-200 cursor-pointer">
+                                                            Join waitlist
+                                                        </button>
+                                                    </a>
                                 )}
                             </>
                         );
+
+                                        const isGeneralSaas = template.name === "General SaaS";
 
                         if (i === 0) {
                             return (
@@ -325,7 +326,16 @@ export function Templates() {
                                 transition={{ duration: 0.5, ease, delay: i * 0.06 }}
                                 className={`${i < 3 ? "lg:col-span-2" : i === 3 ? "lg:col-span-3" : "lg:col-span-3"}`}
                             >
-                                <div className="rounded-2xl bg-zinc-900/80 border border-white/[0.06] p-6 hover:bg-zinc-900 hover:border-white/[0.1] transition-all duration-300 flex flex-col h-full">
+                                    <div className="relative rounded-2xl bg-zinc-900/80 border border-white/[0.06] p-6 pt-14 hover:bg-zinc-900 hover:border-white/[0.1] transition-all duration-300 flex flex-col h-full">
+                                        {!isGeneralSaas && (
+                                                <div className="absolute top-3 right-[-1px] z-20 pointer-events-none">
+                                                    <div className="relative pl-5 pr-4 py-1.5 rounded-l-sm border border-r-0 border-white/[0.16] bg-zinc-800 shadow-[0_6px_18px_rgba(0,0,0,0.4)] [clip-path:polygon(0_0,100%_0,100%_100%,0_100%,10%_50%)]">
+                                                        <span className="text-[10px] uppercase tracking-[0.18em] text-zinc-200 font-semibold whitespace-nowrap">
+                                                            Coming Soon
+                                                        </span>
+                                                    </div>
+                                            </div>
+                                        )}
                                     {cardInner}
                                 </div>
                             </motion.div>
@@ -366,12 +376,11 @@ export function Templates() {
                                 <span className="text-[40px] font-semibold text-emerald-400">${bundlePrice}</span>
                                 <span className="text-zinc-500 text-[14px]">/lifetime</span>
                             </div>
-                            <a href="/templates/general-saas">
+                            <a href="/waitlist">
                                 <button className="bg-white text-black font-medium text-[15px] px-8 py-3 rounded-full hover:bg-zinc-200 transition-colors duration-200 cursor-pointer whitespace-nowrap">
-                                    Get the bundle →
+                                    Join bundle waitlist →
                                 </button>
                             </a>
-                            <p className="text-[12px] text-zinc-600">{spotsLeft !== null ? spotsLeft : "–"} spots left</p>
                         </div>
                     </div>
                 </motion.div>

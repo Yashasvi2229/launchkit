@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/Button";
 import { Check } from "lucide-react";
 
 const ease: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
@@ -24,30 +23,30 @@ export function Pricing() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8 items-start">
-          {/* Option 1: Single Template */}
+        <div className="grid md:grid-cols-2 gap-8 items-stretch">
+          {/* Option 1: General SaaS */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, ease, delay: 0.1 }}
-            className="rounded-2xl bg-white/[0.02] border border-white/[0.06] p-8 hover:bg-white/[0.03] transition-all duration-300"
+            className="rounded-2xl bg-white/[0.04] border border-emerald-500/30 p-8 shadow-[0_0_50px_-20px_rgba(16,185,129,0.15)] relative overflow-hidden group h-full flex flex-col"
           >
-            <h3 className="text-lg font-medium text-white mb-2">Single Template</h3>
+            <h3 className="text-lg font-medium text-white mb-2">General SaaS</h3>
             <p className="text-zinc-500 text-[13px] mb-6">
-              Perfect if you just need one specific starter kit.
+              The live template available right now.
             </p>
 
             <div className="flex items-baseline gap-2 mb-8">
               <span className="text-zinc-500 text-[15px]">from</span>
-              <span className="text-zinc-600 line-through text-[20px]">$200</span>
-              <span className="text-[42px] font-semibold text-emerald-400">$99</span>
+              <span className="text-zinc-600 line-through text-[20px]">$300</span>
+              <span className="text-[42px] font-semibold text-emerald-400">$149</span>
               <span className="text-zinc-500 text-[14px]">/lifetime</span>
             </div>
 
-            <ul className="space-y-4 mb-8">
+            <ul className="space-y-4 mb-8 flex-1">
               {[
-                "One template of your choice",
+                "General SaaS template access",
                 "Full source code ownership",
                 "Lifetime updates",
                 "Community access",
@@ -60,9 +59,9 @@ export function Pricing() {
               ))}
             </ul>
 
-            <a href="#templates" className="block">
-              <button className="w-full py-3 rounded-xl bg-white/[0.06] border border-white/[0.08] text-[14px] text-zinc-300 font-medium hover:bg-white/[0.1] hover:border-white/[0.15] hover:text-white transition-all duration-200">
-                Browse templates
+            <a href="/templates/general-saas" className="block mt-auto">
+              <button className="w-full py-3 rounded-xl bg-white text-black text-[14px] font-medium hover:bg-zinc-200 transition-all duration-200">
+                Get Now →
               </button>
             </a>
           </motion.div>
@@ -73,17 +72,17 @@ export function Pricing() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, ease, delay: 0.2 }}
-            className="rounded-2xl bg-white/[0.04] border border-emerald-500/30 p-8 shadow-[0_0_50px_-20px_rgba(16,185,129,0.15)] relative overflow-hidden group"
+            className="rounded-2xl bg-white/[0.02] border border-white/[0.06] p-8 hover:bg-white/[0.03] transition-all duration-300 relative overflow-hidden group h-full flex flex-col"
           >
             <div className="absolute top-0 right-0 p-4">
-              <span className="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[11px] text-emerald-400 font-medium uppercase tracking-wider">
+              <span className="px-3 py-1 rounded-full bg-white/[0.06] border border-white/[0.12] text-[11px] text-zinc-300 font-medium uppercase tracking-wider">
                 Best Value
               </span>
             </div>
 
             <h3 className="text-lg font-medium text-white mb-2">All-Access Bundle</h3>
             <p className="text-zinc-400 text-[13px] mb-6">
-              Get everything we've built and will build.
+              Bundle is opening soon. Join waitlist for early access.
             </p>
 
             <div className="flex items-baseline gap-2 mb-8">
@@ -92,10 +91,10 @@ export function Pricing() {
               <span className="text-zinc-500 text-[14px]">/lifetime</span>
             </div>
 
-            <ul className="space-y-4 mb-8">
+            <ul className="space-y-4 mb-8 flex-1">
               {[
-                "All 5 current templates",
-                "Future templates included free",
+                "General SaaS now, 4 templates launching next",
+                "Future templates included at launch",
                 "Prioritized for feature requests",
                 "Priority email support",
                 "Unlimited projects",
@@ -109,9 +108,9 @@ export function Pricing() {
               ))}
             </ul>
 
-            <a href="/templates/general-saas" className="block">
+            <a href="/waitlist" className="block mt-auto">
               <button className="w-full py-3 rounded-xl bg-white text-black text-[14px] font-medium hover:bg-zinc-200 transition-all duration-200">
-                Get the bundle
+                Join bundle waitlist
               </button>
             </a>
           </motion.div>

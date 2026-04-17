@@ -7,11 +7,9 @@ import { Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/input";
 import Image from "next/image";
-import { useWaitlistSpots } from "@/hooks/use-waitlist-spots";
 
 export default function WaitlistPage() {
     const [state, action, isPending] = useActionState(joinWaitlist, null);
-    const { spotsLeft } = useWaitlistSpots();
 
     return (
         <div className="min-h-screen h-screen bg-black relative overflow-hidden">
@@ -30,16 +28,6 @@ export default function WaitlistPage() {
                     {/* LEFT: Sign-up form */}
                     <div className="flex flex-col items-center justify-center p-8 md:p-12 lg:p-16">
                         <div className="w-full max-w-sm">
-                            {/* Urgency Badge */}
-                            <div className="flex justify-center mb-6">
-                                <span className="inline-flex items-center gap-2 text-[12px] text-zinc-400 border border-white/10 bg-white/5 backdrop-blur-sm rounded-full px-3 py-1">
-                                    <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
-                                    {spotsLeft !== null ? spotsLeft : "–"} spots left
-                                    <span className="text-zinc-600 mx-0.5">·</span>
-                                    <span className="text-emerald-400">50% off for first 100</span>
-                                </span>
-                            </div>
-
                             {/* Header */}
                             <div className="text-center mb-6">
                                 <h1 className="text-2xl md:text-3xl font-medium tracking-tight text-white mb-2">

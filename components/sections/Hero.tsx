@@ -14,7 +14,7 @@ import { useWaitlistSpots } from "@/hooks/use-waitlist-spots";
 const ease: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
 
 export function Hero() {
-  const { spotsLeft, totalSignups } = useWaitlistSpots();
+  const { spotsLeft } = useWaitlistSpots();
   return (
     <section
       id="hero"
@@ -111,7 +111,7 @@ export function Hero() {
                 {/* Urgency — above the button */}
                 <div className="flex items-center gap-3 mb-3 md:mb-4">
                   <p className="text-[13px] text-zinc-400">
-                    50% off for first 100 signups
+                    50% off for first 100 customers
                   </p>
                   <span className="text-zinc-700 text-[10px]">·</span>
                   <div className="flex items-center gap-1.5 text-[13px] text-emerald-400">
@@ -121,9 +121,9 @@ export function Hero() {
                 </div>
 
                 {/* Button — prominent, solid */}
-                <a href="/waitlist">
+                <a href="#templates">
                   <button className="w-full sm:w-auto max-w-full bg-white text-black font-medium text-[16px] px-6 py-3 sm:px-10 sm:py-3.5 rounded-full hover:bg-zinc-200 transition-colors duration-200 cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap">
-                    Get early access →
+                    Explore templates →
                   </button>
                 </a>
               </motion.div>

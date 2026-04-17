@@ -1,14 +1,11 @@
 "use client";
 
-import { useWaitlistSpots } from "@/hooks/use-waitlist-spots";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui";
 
 const ease: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
 
 export function FinalCTA() {
-  const { spotsLeft } = useWaitlistSpots();
-
   return (
     <section className="py-20 md:py-32 relative">
       {/* Subtle top gradient */}
@@ -44,10 +41,6 @@ export function FinalCTA() {
               Join the waitlist
             </Button>
           </a>
-          <div className="flex items-center gap-2 text-[13px] text-zinc-600">
-            <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
-            {spotsLeft !== null ? spotsLeft : "–"} early-bird spots remaining
-          </div>
         </motion.div>
       </div>
     </section>

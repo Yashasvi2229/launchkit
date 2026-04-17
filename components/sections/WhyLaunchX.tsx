@@ -3,7 +3,6 @@
 import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { X, Check } from "lucide-react";
-import { useWaitlistSpots } from "@/hooks/use-waitlist-spots";
 
 const ease: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
 
@@ -43,14 +42,13 @@ const GENERIC_TEMPLATE_COST = 250;
 const GENERIC_AI_COST = 50;
 const GENERIC_TOOLS_COST = 40;
 const GENERIC_WEEKS = 4;
-const LAUNCHX_PRICE = 199;
+const LAUNCHX_PRICE = 149;
 const LAUNCHX_AI_COST = 15;
 const LAUNCHX_TOOLS_COST = 20;
 const LAUNCHX_WEEKENDS = 1;
 
 export function WhyLaunchX() {
     const [projects, setProjects] = useState(3);
-    const { spotsLeft } = useWaitlistSpots();
 
     const calc = useMemo(() => {
         const genericTemplate = GENERIC_TEMPLATE_COST;
@@ -470,11 +468,18 @@ export function WhyLaunchX() {
 
                         {/* CTA Button */}
                         <div className="mt-8 text-center">
-                            <a href="/waitlist">
+                            <a href="/templates/general-saas">
                                 <button className="bg-white text-black font-medium text-[15px] px-8 py-3.5 rounded-full hover:bg-zinc-200 transition-colors duration-200 cursor-pointer">
-                                    Get LaunchX — $199 ({spotsLeft !== null ? spotsLeft : "–"} spots left)
+                                    Get General SaaS — $149
                                 </button>
                             </a>
+                            <p className="text-[13px] text-zinc-500 mt-3">
+                                Interested in upcoming templates?{" "}
+                                <a href="/waitlist" className="text-zinc-300 hover:text-white underline underline-offset-4 transition-colors">
+                                    Join bundle waitlist
+                                </a>
+                                .
+                            </p>
                         </div>
                     </div>
                 </motion.div>

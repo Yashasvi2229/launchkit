@@ -21,6 +21,12 @@ export function Footer() {
             Privacy
           </a>
           <a
+            href="/eula"
+            className="text-[13px] text-zinc-600 hover:text-zinc-300 transition-colors duration-200"
+          >
+            EULA
+          </a>
+          <a
             href="mailto:thedakshjaitly@gmail.com"
             className="text-[13px] text-zinc-600 hover:text-zinc-300 transition-colors duration-200"
           >

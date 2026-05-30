@@ -144,20 +144,20 @@ export async function POST(request: NextRequest) {
                                         <tr>
                                             <td style="color: #22c55e; font-size: 13px; padding: 4px 8px 4px 0; vertical-align: top; width: 20px;">1.</td>
                                             <td style="color: #a1a1aa; font-size: 13px; padding: 4px 0; line-height: 1.5;">
-                                                Open the <strong style="color: #ffffff;">Dodo customer dashboard</strong> link in the email sent by Dodo Payments. If prompted, connect your GitHub account via the dashboard OAuth flow so Dodo can deliver the repository invite to your GitHub inbox (we don't handle GitHub OAuth directly).
+                                                Open the <strong style="color: #ffffff;">Dodo customer dashboard</strong> link in the email sent by Dodo Payments and connect your GitHub to Dodo. Once connected, the repo invite will arrive in your GitHub inbox.
                                             </td>
                                         </tr>
                                         <tr>
                                             <td style="color: #22c55e; font-size: 13px; padding: 4px 8px 4px 0; vertical-align: top;">2.</td>
                                             <td style="color: #a1a1aa; font-size: 13px; padding: 4px 0; line-height: 1.5;">
-                                                For the Notion workspace, open this link and duplicate the template into your own Notion:
+                                                For the Notion workspace, open this link and duplicate the template into your Notion:
                                                 <div style="margin-top:6px;"><a href="https://launchpad-os.notion.site/LaunchPad-OS-Indie-Founder-Workspace-3473a989d450818d910ff90f3c033ef5?source=copy_link" style="color: #22c55e; text-decoration: none;">LaunchPad OS — Duplicate in Notion</a></div>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td style="color: #22c55e; font-size: 13px; padding: 4px 8px 4px 0; vertical-align: top;">3.</td>
                                             <td style="color: #a1a1aa; font-size: 13px; padding: 4px 0; line-height: 1.5;">
-                                                After you've accepted the GitHub invite and duplicated the Notion template, you're ready to start customizing and shipping. Clone the repo, connect services, and use the Notion workspace to manage tasks, customers, and docs — reach out if you need help getting started.
+                                                After you accept the GitHub invite and duplicate the Notion template, you are ready to start building. Clone the repo and use the Notion workspace to manage tasks, customers, and docs.
                                             </td>
                                         </tr>
                                     </table>
